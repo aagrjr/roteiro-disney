@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Planejamento Orlando 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2230;
+    --border: #2a3140;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --disney: #60a5fa;
+    --disney-bg: #0d1f3c;
+    --disney-border: #1e3a5f;
+    --universal: #a78bfa;
+    --universal-bg: #1a1035;
+    --universal-border: #3b2f6e;
+    --shopping: #fbbf24;
+    --shopping-bg: #1f1708;
+    --shopping-border: #4a3500;
+    --other: #34d399;
+    --other-bg: #061f17;
+    --other-border: #0d4a30;
+    --sidebar-w: 260px;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Georgia', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── HEADER ─────────────────────────────── */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 16px;
+  }
+  .site-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    font-family: -apple-system, sans-serif;
+    white-space: nowrap;
+  }
+  .header-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    justify-content: center;
+  }
+  .header-badge {
+    font-family: -apple-system, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+  }
+  /* Countdown */
+  #countdown-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: -apple-system, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  #countdown-number {
+    font-size: 20px;
+    font-weight: 900;
+    color: #60a5fa;
+    letter-spacing: -.03em;
+    line-height: 1;
+  }
+  #countdown-label { font-size: 11px; line-height: 1.2; }
+  #countdown-wrap.traveling { color: #34d399; }
+  #countdown-wrap.traveling #countdown-number { color: #34d399; }
+
+  /* ── LAYOUT ──────────────────────────────── */
+  .layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    min-height: calc(100vh - 60px);
+  }
+
+  /* ── SIDEBAR ─────────────────────────────── */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 20px 0 24px;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .sidebar-section-title {
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    padding: 0 20px 8px;
+  }
+  /* Phase dividers */
+  .sidebar-phase {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px 6px;
+    margin-top: 4px;
+  }
+  .sidebar-phase-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    white-space: nowrap;
+  }
+  .sidebar-phase-line { flex: 1; height: 1px; }
+  .phase-disney .sidebar-phase-label { color: var(--disney); }
+  .phase-disney .sidebar-phase-line { background: var(--disney-border); }
+  .phase-universal .sidebar-phase-label { color: var(--universal); }
+  .phase-universal .sidebar-phase-line { background: var(--universal-border); }
+
+  .sidebar-nav { list-style: none; }
+  .sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    font-family: -apple-system, sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background .12s, border-color .12s;
+  }
+  .sidebar-nav li a:hover { background: var(--bg); }
+  .sidebar-nav li a .nav-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sidebar-nav li a .nav-date { color: var(--muted); font-size: 11px; margin-left: auto; }
+
+  /* TODAY highlight */
+  .sidebar-nav li a.is-today {
+    background: rgba(96,165,250,.08);
+    border-left-color: #60a5fa;
+    color: #93c5fd;
+    font-weight: 700;
+  }
+  .sidebar-nav li a.is-today .nav-date { color: #60a5fa; }
+  .today-pill {
+    display: inline-block;
+    background: #60a5fa;
+    color: #0d1117;
+    font-size: 9px;
+    font-weight: 900;
+    padding: 1px 5px;
+    border-radius: 999px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-left: 2px;
+  }
+
+  .dot-disney { background: var(--disney); }
+  .dot-universal { background: var(--universal); }
+  .dot-shopping { background: var(--shopping); }
+  .dot-other { background: var(--other); }
+
+
+
+  /* ── MOBILE DAY NAV ──────────────────────── */
+  .mobile-day-nav {
+    display: none;
+  }
+  .mobile-day-nav-inner {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 12px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-day-nav-inner::-webkit-scrollbar { height: 6px; }
+  .mobile-day-nav-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+  .mobile-day-link {
+    flex: 0 0 auto;
+    min-width: 74px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 8px 9px;
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    font-family: -apple-system, sans-serif;
+    line-height: 1.15;
+    text-align: center;
+  }
+  .mobile-day-link:hover { border-color: #4a5568; }
+  .mobile-day-link .mobile-day-date {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .mobile-day-link .mobile-day-name {
+    display: block;
+    margin-top: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .mobile-day-link.disney { border-color: var(--disney-border); background: var(--disney-bg); }
+  .mobile-day-link.universal { border-color: var(--universal-border); background: var(--universal-bg); }
+  .mobile-day-link.shopping { border-color: var(--shopping-border); background: var(--shopping-bg); }
+  .mobile-day-link.other { border-color: var(--other-border); background: var(--other-bg); }
+  .mobile-day-link.disney .mobile-day-date { color: var(--disney); }
+  .mobile-day-link.universal .mobile-day-date { color: var(--universal); }
+  .mobile-day-link.shopping .mobile-day-date { color: var(--shopping); }
+  .mobile-day-link.other .mobile-day-date { color: var(--other); }
+
+  /* reservas quick view */
+  .sidebar-reservations { margin-top: 16px; padding: 0 20px; }
+  .sidebar-reservations h3 {
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .res-mini { display: flex; flex-direction: column; gap: 5px; }
+  .res-mini a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    background: var(--bg);
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .res-mini a:hover { border-color: #4a5568; }
+  .res-name { font-weight: 600; }
+  .res-info { color: var(--muted); font-size: 11px; text-align: right; }
+
+  /* ── MAIN ─────────────────────────────────── */
+  .main { padding: 40px 48px 80px; width: 100%; min-width: 0; }
+
+
+  .summary-collapsible {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  .summary-collapsible > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    font-family: -apple-system, sans-serif;
+  }
+  .summary-collapsible > summary::-webkit-details-marker { display: none; }
+  .summary-title { display: flex; flex-direction: column; gap: 2px; }
+  .summary-title strong { font-size: 14px; letter-spacing: -.01em; }
+  .summary-title span { font-size: 12px; color: var(--muted); }
+  .summary-chevron { color: var(--muted); font-size: 12px; font-weight: 900; transition: transform .2s; }
+  .summary-collapsible[open] .summary-chevron { transform: rotate(180deg); }
+  .summary-collapsible .summary-strip { margin: 0; padding: 0 18px 18px; }
+  /* ── SUMMARY STRIP ───────────────────────── */
+  .summary-strip { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+  .sum-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    min-width: 90px;
+    flex: 1;
+  }
+  .sum-number { display: block; font-size: 28px; font-weight: 700; line-height: 1; font-family: -apple-system, sans-serif; letter-spacing: -.03em; }
+  .sum-label { display: block; font-family: -apple-system, sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+  /* ── PHASE DIVIDER (main content) ─────────── */
+  .phase-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 36px;
+  }
+  .phase-divider-line { flex: 1; height: 1px; }
+  .phase-divider-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .phase-divider.disney .phase-divider-label { color: var(--disney); border-color: var(--disney-border); background: var(--disney-bg); }
+  .phase-divider.disney .phase-divider-line { background: var(--disney-border); }
+  .phase-divider.universal .phase-divider-label { color: var(--universal); border-color: var(--universal-border); background: var(--universal-bg); }
+  .phase-divider.universal .phase-divider-line { background: var(--universal-border); }
+
+  /* ── DAY BLOCK ───────────────────────────── */
+  .day-block { margin-bottom: 48px; scroll-margin-top: 80px; }
+  .day-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .day-number { font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+  .day-line { flex: 1; height: 1px; background: var(--border); }
+  .day-category-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .03em;
+  }
+  .pill-disney   { background: var(--disney-bg);   color: var(--disney);   border: 1px solid var(--disney-border); }
+  .pill-universal{ background: var(--universal-bg); color: var(--universal);border: 1px solid var(--universal-border); }
+  .pill-shopping { background: var(--shopping-bg);  color: var(--shopping); border: 1px solid var(--shopping-border); }
+  .pill-other    { background: var(--other-bg);     color: var(--other);    border: 1px solid var(--other-border); }
+
+  .status-badge {
+    display: inline-flex; align-items: center;
+    border-radius: 999px; padding: 3px 9px;
+    font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700;
+  }
+  .st-confirmed { background: #062a14; color: #6ee7b7; border: 1px solid #0d4a28; }
+  .st-decide    { background: #1f1400; color: #fcd34d; border: 1px solid #4a3200; }
+  .st-optional  { background: #161b22; color: #94a3b8; border: 1px solid #2a3140; }
+  .st-logistics { background: #071825; color: #7dd3fc; border: 1px solid #0c3049; }
+
+  .day-title-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+  .day-date-block {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 14px;
+    text-align: center; min-width: 56px; flex-shrink: 0;
+  }
+  .day-date-day   { display: block; font-family: -apple-system, sans-serif; font-size: 22px; font-weight: 800; line-height: 1; color: var(--text); }
+  .day-date-month { display: block; font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-top: 2px; }
+  .day-heading { flex: 1; }
+  .day-program  { font-size: 24px; font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+  .day-weekday  { font-family: -apple-system, sans-serif; font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .day-hotel    { font-family: -apple-system, sans-serif; font-size: 12px; color: var(--muted); margin-top: 4px; display: flex; align-items: center; gap: 5px; }
+
+  /* ── DAY CONTENT GRID ────────────────────── */
+  .day-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .day-content.full { grid-template-columns: 1fr; }
+
+  .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+  .info-card.span2 { grid-column: span 2; }
+
+  .info-card.reservation-card          { border-color: var(--disney-border);   background: var(--disney-bg); }
+  .info-card.reservation-card.universal{ border-color: var(--universal-border); background: var(--universal-bg); }
+  .info-card.priority-card  { border-color: #0d4a30; background: #061f17; }
+  .info-card.suggestion-card{ border-color: #4a3500; background: #1a1200; }
+  .info-card.early-card     { border-color: var(--universal-border); background: var(--universal-bg); }
+  .info-card.logistics-card { border-color: #0c3049; background: #071825; }
+
+  .card-label {
+    font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin-bottom: 8px;
+  }
+  .reservation-card .card-label { color: #93c5fd; }
+  .priority-card .card-label    { color: #6ee7b7; }
+  .suggestion-card .card-label  { color: #fcd34d; }
+  .early-card .card-label       { color: #c4b5fd; }
+  .logistics-card .card-label   { color: #7dd3fc; }
+
+  .card-value { font-size: 14px; line-height: 1.55; color: var(--text); }
+  .card-value a { color: #60a5fa; text-decoration: none; font-weight: 600; }
+  .card-value a:hover { text-decoration: underline; }
+  .reservation-card .card-value a { color: #93c5fd; }
+
+  /* ── RESERVATION TIME PILL ───────────────── */
+  .res-time-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-family: -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -.02em;
+    margin-top: 6px;
+    background: rgba(96,165,250,.15);
+    color: #bfdbfe;
+    border: 1px solid rgba(96,165,250,.25);
+  }
+  .reservation-card.universal .res-time-pill {
+    background: rgba(167,139,250,.15);
+    color: #ddd6fe;
+    border-color: rgba(167,139,250,.25);
+  }
+  .res-restaurant-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+
+  /* ── COLLAPSIBLE SUGGESTIONS ─────────────── */
+  .suggestion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+  .suggestion-toggle::-webkit-details-marker { display: none; }
+  .suggestion-toggle .toggle-icon {
+    font-size: 11px;
+    color: var(--muted);
+    transition: transform .2s;
+    font-family: -apple-system, sans-serif;
+    font-weight: 700;
+  }
+  details.suggestion-card[open] .toggle-icon { transform: rotate(180deg); }
+  .suggestion-body { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.06); }
+
+  /* timeline inside card */
+  .mini-timeline { display: grid; gap: 10px; }
+  .tl-row { display: flex; gap: 12px; align-items: flex-start; }
+  .tl-time { font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 800; color: #7dd3fc; width: 52px; flex-shrink: 0; padding-top: 2px; text-transform: uppercase; }
+  .tl-text { font-size: 14px; line-height: 1.4; }
+
+  .early-note { font-family: -apple-system, sans-serif; font-size: 12px; color: #c4b5fd; margin-top: 4px; line-height: 1.4; }
+
+  .action-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px;
+    font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 700;
+    color: #7dd3fc; text-decoration: none; background: #071825;
+  }
+  .action-link:hover { border-color: #7dd3fc; }
+
+  .back-top {
+    position: fixed; right: 24px; bottom: 24px;
+    background: #e6edf3; color: #0d1117;
+    border: none; border-radius: 999px; padding: 10px 16px;
+    font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.5);
+  }
+  .back-top:hover { opacity: .85; }
+
+  /* ── TRIP STATUS / TODAY PANEL ───────────── */
+  .trip-status-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 12px; margin: -22px 0 34px; }
+  .trip-status-card { background: linear-gradient(135deg, rgba(96,165,250,.13), rgba(52,211,153,.08)); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; }
+  .trip-status-label { font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+  .trip-status-title { font-size: 21px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+  .trip-status-detail { margin-top: 6px; color: var(--muted); font-family: -apple-system, sans-serif; font-size: 13px; line-height: 1.45; }
+  .trip-status-actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* ── RESERVATIONS SECTION ────────────────── */
+  .reservation-section { margin: 0 0 38px; scroll-margin-top: 150px; }
+  .reservation-section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .reservation-section-title { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+  .reservation-section-subtitle { font-family: -apple-system, sans-serif; color: var(--muted); font-size: 12px; }
+  .reservation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+  .reservation-tile { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: var(--text); font-family: -apple-system, sans-serif; }
+  .reservation-tile:hover { border-color: #4a5568; }
+  .reservation-tile-name { display: block; font-weight: 800; font-size: 14px; }
+  .reservation-tile-info { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+  /* ── HOTEL PHASE CARDS ───────────────────── */
+  .hotel-phase-card { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 13px 16px; margin: -20px 0 34px; font-family: -apple-system, sans-serif; color: var(--muted); font-size: 13px; }
+  .hotel-phase-card strong { color: var(--text); }
+
+  .reservation-card .res-restaurant-name a, .button-link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(96,165,250,.25); background: rgba(96,165,250,.12); text-decoration: none; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 800; }
+  .reservation-card.universal .res-restaurant-name a { border-color: rgba(167,139,250,.25); background: rgba(167,139,250,.12); }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      min-height: calc(100vh - 72px);
+    }
+    .sidebar { display: none; }
+    .mobile-day-nav {
+      display: block;
+      position: sticky;
+      top: 72px;
+      z-index: 95;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .main { padding: 24px 20px 60px; }
+    .day-content { grid-template-columns: 1fr; }
+    .info-card.span2 { grid-column: span 1; }
+    .site-header {
+      height: 72px;
+      padding: 8px 12px;
+      gap: 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-rows: 1fr;
+      align-items: center;
+    }
+    .site-header h1 {
+      font-size: 14px;
+      line-height: 1.15;
+      white-space: normal;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .header-center { display: none; }
+    #countdown-wrap {
+      display: inline-flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      flex-shrink: 0;
+      justify-self: end;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      max-width: 128px;
+    }
+    #countdown-number { font-size: 20px; }
+    #countdown-label { font-size: 10px; line-height: 1.1; }
+    .day-block { scroll-margin-top: 138px; }
+    .trip-status-grid { grid-template-columns: 1fr; margin: 0 0 26px; }
+    .trip-status-title { font-size: 18px; }
+    .reservation-section { margin-bottom: 30px; }
+    .reservation-section-header { align-items: flex-start; flex-direction: column; gap: 3px; }
+    .reservation-grid { grid-template-columns: 1fr; }
+    .hotel-phase-card { margin: -18px 0 28px; }
+  }
+
+
+  .transport-suggestion .card-value strong { color: #bae6fd; }
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="site-header">
+<h1>Planejamento Orlando 2026</h1>
+<div class="header-center">
+<span class="header-badge"><span style="color:#60a5fa">●</span> Disney</span>
+<span class="header-badge"><span style="color:#a78bfa">●</span> Universal</span>
+<span class="header-badge"><span style="color:#fbbf24">●</span> Compras</span>
+<span class="header-badge"><span style="color:#34d399">●</span> Passeio</span>
+</div>
+<div id="countdown-wrap">
+<span id="countdown-number">12</span>
+<span id="countdown-label">dias para<br/>a viagem</span>
+</div>
+</header>
+<!-- MOBILE DAY NAV -->
+<nav aria-label="Navegação por dias da viagem" class="mobile-day-nav">
+<div class="mobile-day-nav-inner">
+<a class="mobile-day-link other" href="#reservations"><span class="mobile-day-date">★</span><span class="mobile-day-name">Reservas</span></a>
+<a class="mobile-day-link disney" href="#day-01"><span class="mobile-day-date">06/05</span><span class="mobile-day-name">MK</span></a>
+<a class="mobile-day-link disney" href="#day-02"><span class="mobile-day-date">07/05</span><span class="mobile-day-name">HS</span></a>
+<a class="mobile-day-link disney" href="#day-03"><span class="mobile-day-date">08/05</span><span class="mobile-day-name">AK</span></a>
+<a class="mobile-day-link shopping" href="#day-04"><span class="mobile-day-date">09/05</span><span class="mobile-day-name">Outlets</span></a>
+<a class="mobile-day-link disney" href="#day-05"><span class="mobile-day-date">10/05</span><span class="mobile-day-name">EPCOT</span></a>
+<a class="mobile-day-link other" href="#day-06"><span class="mobile-day-date">11/05</span><span class="mobile-day-name">Springs</span></a>
+<a class="mobile-day-link other" href="#day-07"><span class="mobile-day-date">12/05</span><span class="mobile-day-name">Hotel</span></a>
+<a class="mobile-day-link universal" href="#day-08"><span class="mobile-day-date">13/05</span><span class="mobile-day-name">IOA</span></a>
+<a class="mobile-day-link universal" href="#day-09"><span class="mobile-day-date">14/05</span><span class="mobile-day-name">USF</span></a>
+<a class="mobile-day-link shopping" href="#day-10"><span class="mobile-day-date">15/05</span><span class="mobile-day-name">Mall</span></a>
+<a class="mobile-day-link universal" href="#day-11"><span class="mobile-day-date">16/05</span><span class="mobile-day-name">Epic</span></a>
+<a class="mobile-day-link universal" href="#day-12"><span class="mobile-day-date">17/05</span><span class="mobile-day-name">Hogwarts</span></a>
+<a class="mobile-day-link other" href="#day-13"><span class="mobile-day-date">18/05</span><span class="mobile-day-name">KSC</span></a>
+<a class="mobile-day-link shopping" href="#day-14"><span class="mobile-day-date">19/05</span><span class="mobile-day-name">Livre</span></a>
+<a class="mobile-day-link shopping" href="#day-15"><span class="mobile-day-date">20/05</span><span class="mobile-day-name">Voo</span></a>
+</div>
+</nav>
+<div class="layout">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<p class="sidebar-section-title">Dias da viagem</p>
+<ul class="sidebar-nav">
+<!-- Fase Disney -->
+<li class="sidebar-phase phase-disney">
+<span class="sidebar-phase-label">Disney</span>
+<span class="sidebar-phase-line"></span>
+</li>
+<li><a data-date="2026-05-06" href="#day-01"><span class="nav-dot dot-disney"></span>Magic Kingdom<span class="nav-date">06/05</span></a></li>
+<li><a data-date="2026-05-07" href="#day-02"><span class="nav-dot dot-disney"></span>Hollywood Studios<span class="nav-date">07/05</span></a></li>
+<li><a data-date="2026-05-08" href="#day-03"><span class="nav-dot dot-disney"></span>Animal Kingdom<span class="nav-date">08/05</span></a></li>
+<li><a data-date="2026-05-09" href="#day-04"><span class="nav-dot dot-shopping"></span>Outlets / Morimoto<span class="nav-date">09/05</span></a></li>
+<li><a data-date="2026-05-10" href="#day-05"><span class="nav-dot dot-disney"></span>EPCOT<span class="nav-date">10/05</span></a></li>
+<li><a data-date="2026-05-11" href="#day-06"><span class="nav-dot dot-other"></span>Disney Springs<span class="nav-date">11/05</span></a></li>
+<li><a data-date="2026-05-12" href="#day-07"><span class="nav-dot dot-other"></span>Troca de hotel<span class="nav-date">12/05</span></a></li>
+<!-- Fase Universal -->
+<li class="sidebar-phase phase-universal">
+<span class="sidebar-phase-label">Universal</span>
+<span class="sidebar-phase-line"></span>
+</li>
+<li><a data-date="2026-05-13" href="#day-08"><span class="nav-dot dot-universal"></span>Islands of Adventure<span class="nav-date">13/05</span></a></li>
+<li><a data-date="2026-05-14" href="#day-09"><span class="nav-dot dot-universal"></span>Universal Studios<span class="nav-date">14/05</span></a></li>
+<li><a data-date="2026-05-15" href="#day-10"><span class="nav-dot dot-shopping"></span>Mall at Millenia<span class="nav-date">15/05</span></a></li>
+<li><a data-date="2026-05-16" href="#day-11"><span class="nav-dot dot-universal"></span>Epic Universe<span class="nav-date">16/05</span></a></li>
+<li><a data-date="2026-05-17" href="#day-12"><span class="nav-dot dot-universal"></span>Hogwarts Express<span class="nav-date">17/05</span></a></li>
+<li><a data-date="2026-05-18" href="#day-13"><span class="nav-dot dot-other"></span>Kennedy Space Center<span class="nav-date">18/05</span></a></li>
+<li><a data-date="2026-05-19" href="#day-14"><span class="nav-dot dot-shopping"></span>Dia livre<span class="nav-date">19/05</span></a></li>
+<li><a data-date="2026-05-20" href="#day-15"><span class="nav-dot dot-shopping"></span>Checkout / Voo<span class="nav-date">20/05</span></a></li>
+</ul>
+<div class="sidebar-reservations">
+<h3>Reservas confirmadas</h3>
+<div class="res-mini">
+<a href="#day-01"><span class="res-name">Be Our Guest</span><span class="res-info">06/05 · 15h</span></a>
+<a href="#day-02"><span class="res-name">Oga's Cantina</span><span class="res-info">07/05 · 15h15</span></a>
+<a href="#day-04"><span class="res-name">Morimoto</span><span class="res-info">09/05 · 21h</span></a>
+<a href="#day-05"><span class="res-name">Teppan Edo</span><span class="res-info">10/05 · 15h</span></a>
+<a href="#day-07"><span class="res-name">Bigfire</span><span class="res-info">12/05 · 19h</span></a>
+<a href="#day-08"><span class="res-name">Mythos</span><span class="res-info">13/05 · 15h</span></a>
+</div>
+</div>
+</aside>
+<!-- MAIN -->
+<main class="main">
+<!-- SUMMARY -->
+<!-- SUMMARY -->
+<details class="summary-collapsible">
+  <summary>
+    <span class="summary-title">
+      <strong>Resumo da viagem</strong>
+      <span>15 dias · 4 Disney · 4 Universal · 4 compras · 6 reservas</span>
+    </span>
+    <span class="summary-chevron">▾</span>
+  </summary>
+  <div class="summary-strip">
+    <div class="sum-card"><span class="sum-number">15</span><span class="sum-label">dias</span></div>
+    <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Disney</span></div>
+    <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Universal</span></div>
+    <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Compras</span></div>
+    <div class="sum-card"><span class="sum-number">3</span><span class="sum-label">Passeios</span></div>
+    <div class="sum-card"><span class="sum-number">6</span><span class="sum-label">Reservas</span></div>
+  </div>
+</details>
+<!-- STATUS / HOJE -->
+<section aria-label="Resumo prático da viagem" class="trip-status-grid">
+<div class="trip-status-card" id="today-card">
+<div class="trip-status-label">Hoje / próximo dia</div>
+<div class="trip-status-title" id="today-title">Próximo dia planejado: Magic Kingdom</div>
+<div class="trip-status-detail" id="today-detail">06/05 · Quarta-feira · Disney's Port Orleans Resort - French Quarter</div>
+<div class="trip-status-actions"><a class="action-link" href="#day-01" id="today-link">Ver dia</a></div>
+</div>
+<div class="trip-status-card" id="next-reservation-card">
+<div class="trip-status-label">Próximo compromisso</div>
+<div class="trip-status-title" id="next-reservation-title">Be Our Guest</div>
+<div class="trip-status-detail" id="next-reservation-detail">06/05 · 15h00 · Magic Kingdom</div>
+<div class="trip-status-actions"><a class="action-link" href="#day-01" id="next-reservation-link">Ver reserva</a></div>
+</div>
+</section>
+<!-- RESERVAS CONFIRMADAS -->
+<section aria-label="Reservas confirmadas" class="reservation-section" id="reservations">
+<div class="reservation-section-header">
+<h2 class="reservation-section-title">Reservas confirmadas</h2>
+<span class="reservation-section-subtitle">Atalho útil no celular</span>
+</div>
+<div class="reservation-grid">
+<a class="reservation-tile" href="#day-01"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom</span></a>
+<a class="reservation-tile" href="#day-02"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios</span></a>
+<a class="reservation-tile" href="#day-04"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs</span></a>
+<a class="reservation-tile" href="#day-05"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT</span></a>
+<a class="reservation-tile" href="#day-07"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
+<a class="reservation-tile" href="#day-08"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
+</div>
+</section>
+<!-- FASE DISNEY -->
+<div class="phase-divider disney">
+<div class="phase-divider-line"></div>
+<span class="phase-divider-label">Fase Disney · 06–12/05</span>
+<div class="phase-divider-line"></div>
+</div>
+<div class="hotel-phase-card"><strong>Hospedagem Disney:</strong> 06–12/05 · Disney's Port Orleans Resort - French Quarter</div>
+<!-- DAY 01 -->
+<section class="day-block" id="day-01">
+<div class="day-eyebrow">
+<span class="day-number">Dia 01</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-disney">Disney</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">06</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Magic Kingdom</div>
+<div class="day-weekday">Quarta-feira</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>8h30</strong><div class="early-note">Magic Kingdom abre às 9h — benefício Disney Resort: 30 min antes.</div></div>
+</div><div class="info-card logistics-card transport-suggestion"><div class="card-label">Transporte do hotel</div><div class="card-value">Sair do quarto por volta de <strong>7h15</strong> e tentar pegar o ônibus Disney entre <strong>7h30 e 7h45</strong>. Meta: estar no Magic Kingdom antes da entrada antecipada das 8h30, com margem para espera do ônibus e segurança.<div class="early-note">Sugestão prática com margem; confirme horários e rotas no app/placas do hotel na véspera.</div></div></div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Chegar cedo, focar nas atrações principais e usar Be Our Guest como pausa longa do dia.</div>
+</div>
+<div class="info-card reservation-card span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://disneyworld.disney.go.com/pt-br/dining/magic-kingdom/be-our-guest-restaurant/" rel="noopener noreferrer" target="_blank">Be Our Guest</a></div>
+<span class="res-time-pill">15h00</span>
+</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong><a href="https://disneyworld.disney.go.com/dining/magic-kingdom/aloha-isle/" rel="noopener noreferrer" target="_blank">Aloha Isle</a></strong> — Adventureland. DOLE Whip Pineapple Juice Float (US$ 7,29), soft-serve (US$ 5,99), Tropical Serenade Float (US$ 8,29).<br/><br/>
+<strong><a href="https://disneyworld.disney.go.com/dining/magic-kingdom/sleepy-hollow/" rel="noopener noreferrer" target="_blank">Sleepy Hollow</a></strong> — Liberty Square. Waffles doces e salgados: chocolate-hazelnut com banana e berries (US$ 9,79) ou sweet-and-spicy maple chicken (US$ 12,90).
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 02 -->
+<section class="day-block" id="day-02">
+<div class="day-eyebrow">
+<span class="day-number">Dia 02</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-disney">Disney</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">07</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Hollywood Studios</div>
+<div class="day-weekday">Quinta-feira</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>8h30</strong><div class="early-note">Hollywood Studios abre às 9h — benefício Disney Resort: 30 min antes.</div></div>
+</div><div class="info-card logistics-card transport-suggestion"><div class="card-label">Transporte do hotel</div><div class="card-value">Sair do quarto por volta de <strong>7h25</strong> e tentar pegar o ônibus Disney entre <strong>7h40 e 7h50</strong>. Meta: chegar ao Hollywood Studios com folga para a entrada antecipada das 8h30.<div class="early-note">Sugestão prática com margem; confirme horários e rotas no app/placas do hotel na véspera.</div></div></div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Priorizar Galaxy's Edge, Oga's Cantina e pelo menos um quick service temático.</div>
+</div>
+<div class="info-card reservation-card span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://disneyworld.disney.go.com/dining/hollywood-studios/ogas-cantina/" rel="noopener noreferrer" target="_blank">Oga's Cantina</a></div>
+<span class="res-time-pill">15h15</span>
+</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong><a href="https://disneyworld.disney.go.com/dining/hollywood-studios/ronto-roasters/" rel="noopener noreferrer" target="_blank">Ronto Roasters</a></strong> — Galaxy's Edge. Ronto Wrap com carne suína, linguiça e salada cítrica (US$ 13,99). Café da manhã: Ronto Morning Wrap (US$ 12,90).<br/><br/>
+<strong><a href="https://disneyworld.disney.go.com/dining/hollywood-studios/docking-bay-7-food-and-cargo/" rel="noopener noreferrer" target="_blank">Docking Bay 7</a></strong> — Melhor almoço quick service do parque se quiserem algo além de burger padrão.<br/><br/>
+<strong><a href="https://disneyworld.disney.go.com/pt-br/dining/hollywood-studios/milk-stand/" rel="noopener noreferrer" target="_blank">Milk Stand</a></strong> — Blue Milk (frutado) e Green Milk (cítrico/tropical) frozen, em Galaxy's Edge. Vale mais pela experiência.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 03 -->
+<section class="day-block" id="day-03">
+<div class="day-eyebrow">
+<span class="day-number">Dia 03</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-disney">Disney</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">08</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Animal Kingdom</div>
+<div class="day-weekday">Sexta-feira</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>7h30</strong><div class="early-note">Animal Kingdom abre às 8h — benefício Disney Resort: 30 min antes.</div></div>
+</div><div class="info-card logistics-card transport-suggestion"><div class="card-label">Transporte do hotel</div><div class="card-value">Dia bem cedo: sair do quarto por volta de <strong>6h25</strong> e tentar pegar o ônibus Disney entre <strong>6h40 e 6h50</strong>. Meta: chegar ao Animal Kingdom antes da entrada antecipada das 7h30 e começar por Pandora.<div class="early-note">Sugestão prática com margem; confirme horários e rotas no app/placas do hotel na véspera.</div></div></div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Priorizar Pandora, Safari, almoço no Satu'li Canteen e parada no Pongu Pongu.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Plano do dia</div>
+<div class="card-value">
+<div class="mini-timeline">
+<div class="tl-row"><span class="tl-time">Manhã</span><span class="tl-text">Chegar cedo e começar por Pandora / Flight of Passage.</span></div>
+<div class="tl-row"><span class="tl-time">Depois</span><span class="tl-text">Encaixar Kilimanjaro Safaris e atrações principais conforme filas.</span></div>
+<div class="tl-row"><span class="tl-time">Almoço</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/dining/animal-kingdom/satuli-canteen/" rel="noopener noreferrer" target="_blank">Satu'li Canteen</a></strong> como refeição principal do parque.<br/>Uma das melhores opções de comida rápida da Disney, com bowls de frango, tofu e variações mais interessantes. Sobremesa: Mousse Metkayina (US$ 6,29).</span></div>
+<div class="tl-row"><span class="tl-time">Tarde</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/dining/animal-kingdom/pongu-pongu/" rel="noopener noreferrer" target="_blank">Pongu Pongu</a></strong> para o snack icônico de Pandora.<br/>Pongu Lumpia: rolinho de pineapple cream cheese (US$ 3,79).</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DAY 04 -->
+<section class="day-block" id="day-04">
+<div class="day-eyebrow">
+<span class="day-number">Dia 04</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-shopping">Compras</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">09</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Outlets / Morimoto</div>
+<div class="day-weekday">Sábado</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card span2">
+<div class="card-label">Programa do dia</div>
+<div class="card-value"><a class="action-link" href="https://www.premiumoutlets.com/outlet/orlando-vineland" rel="noopener noreferrer" target="_blank">Orlando Vineland Premium Outlets</a></div>
+</div>
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Compras no Orlando Vineland Premium Outlets com pausa no hotel antes do Morimoto às 21h.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Endereço / mapa</div>
+<div class="card-value"><a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=8200+Vineland+Ave,+Orlando,+FL+32821" rel="noopener noreferrer" target="_blank">Abrir no mapa</a> — 8200 Vineland Ave, Orlando, FL 32821.</div>
+</div>
+<div class="info-card reservation-card span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://disneyworld.disney.go.com/dining/disney-springs/morimoto-asia/" rel="noopener noreferrer" target="_blank">Morimoto Disney Springs</a></div>
+<span class="res-time-pill">21h00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- DAY 05 -->
+<section class="day-block" id="day-05">
+<div class="day-eyebrow">
+<span class="day-number">Dia 05</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-disney">Disney</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">10</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">EPCOT</div>
+<div class="day-weekday">Domingo</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>8h30</strong><div class="early-note">EPCOT abre às 9h — benefício Disney Resort: 30 min antes.</div></div>
+</div><div class="info-card logistics-card transport-suggestion"><div class="card-label">Transporte do hotel</div><div class="card-value">Sair do quarto por volta de <strong>7h25</strong> e tentar pegar o ônibus Disney entre <strong>7h40 e 7h50</strong>. Meta: chegar ao EPCOT com folga para a entrada antecipada das 8h30.<div class="early-note">Sugestão prática com margem; confirme horários e rotas no app/placas do hotel na véspera.</div></div></div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Focar em World Showcase e chegar com calma ao Teppan Edo às 15h.</div>
+</div>
+<div class="info-card reservation-card span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://disneyworld.disney.go.com/pt-br/dining/epcot/teppan-edo/" rel="noopener noreferrer" target="_blank">Teppan Edo</a></div>
+<span class="res-time-pill">15h00</span>
+</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong><a href="https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/" rel="noopener noreferrer" target="_blank">Les Halles Boulangerie-Patisserie</a></strong> — Pavilhão da França. Sanduíches, sopa, quiche, baguetes e doces. Das 8h30 às 21h. Destaques: Dinde B.L.T., Poulet au Pistou, Jambon Beurre, Quiche Lorraine.<br/><br/>
+<strong><a href="https://disneyworld.disney.go.com/shops/karamell-kuche/" rel="noopener noreferrer" target="_blank">Karamell-Küche</a></strong> — Snack "vale a parada". Produtos com Werther's Original caramel. Das 9h às 21h.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 06 -->
+<section class="day-block" id="day-06">
+<div class="day-eyebrow">
+<span class="day-number">Dia 06</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-other">Passeio</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">11</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Disney Springs</div>
+<div class="day-weekday">Segunda-feira</div>
+<div class="day-hotel">🏨 Disney's Port Orleans Resort - French Quarter</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Fazer Disney Springs sem correria: passeio leve, doces famosos e jantar de acordo com a energia do dia.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Plano do dia</div>
+<div class="card-value">
+<div class="mini-timeline">
+<div class="tl-row"><span class="tl-time">Manhã</span><span class="tl-text">Começar mais devagar no hotel, recuperar energia dos parques e sair sem pressa.</span></div>
+<div class="tl-row"><span class="tl-time">Tarde</span><span class="tl-text">Passear por Disney Springs, lojas e paradas de doce. Prioridade para <a href="https://disneyworld.disney.go.com/dining/disney-springs/gideons-bakehouse/" rel="noopener noreferrer" target="_blank">Gideon's Bakehouse</a>; se quiser algo mais simples, considerar <a href="https://disneyworld.disney.go.com/dining/disney-springs/everglazed-donuts-and-cold-brew/" rel="noopener noreferrer" target="_blank">Everglazed Donuts &amp; Cold Brew</a> ou <a href="https://disneyworld.disney.go.com/shops/disney-springs/ghirardelli-ice-cream-and-chocolate-shop/" rel="noopener noreferrer" target="_blank">Ghirardelli</a>.</span></div>
+<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Escolher o jantar pelo clima: <a href="https://disneyworld.disney.go.com/dining/disney-springs/wine-bar-george/" rel="noopener noreferrer" target="_blank">Wine Bar George</a> para algo mais tranquilo, <a href="https://disneyworld.disney.go.com/dining/disney-springs/polite-pig/" rel="noopener noreferrer" target="_blank">The Polite Pig</a> para casual sem jantar longo, ou <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> para jantar especial.</span></div>
+</div>
+</div>
+</div>
+<details class="info-card suggestion-card span2" open="">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Detalhes das opções</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>Jantar tranquilo:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/wine-bar-george/" rel="noopener noreferrer" target="_blank">Wine Bar George</a> — melhor opção para uma noite mais tranquila.<br/>
+<strong>Jantar casual:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/polite-pig/" rel="noopener noreferrer" target="_blank">The Polite Pig</a> — boa escolha se vocês quiserem algo casual, sem jantar longo.<br/>
+<strong>Jantar especial:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> by José Andrés — tapas espanholas, paella e sangria; fica no West Side de Disney Springs.<br/><br/>
+<strong>Doces:</strong><br/>
+            1. <a href="https://disneyworld.disney.go.com/dining/disney-springs/gideons-bakehouse/" rel="noopener noreferrer" target="_blank">Gideon's Bakehouse</a> — provavelmente o doce mais famoso de Disney Springs; cookies enormes e muita popularidade, então pode ter fila.<br/>
+            2. <a href="https://disneyworld.disney.go.com/dining/disney-springs/everglazed-donuts-and-cold-brew/" rel="noopener noreferrer" target="_blank">Everglazed Donuts &amp; Cold Brew</a> — melhor pedida se vocês gostam de donut doce e querem algo bem característico.<br/>
+            3. <a href="https://disneyworld.disney.go.com/shops/disney-springs/ghirardelli-ice-cream-and-chocolate-shop/" rel="noopener noreferrer" target="_blank">Ghirardelli Soda Fountain &amp; Chocolate Shop</a> — boa para sobremesa mais clássica, chocolate e sorvete.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 07 -->
+<section class="day-block" id="day-07">
+<div class="day-eyebrow">
+<span class="day-number">Dia 07</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-other">Transição</span>
+<span class="status-badge st-logistics">Logística</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">12</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Troca de hotel</div>
+<div class="day-weekday">Terça-feira</div>
+<div class="day-hotel">🏨 Port Orleans → Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Fazer a troca de hotel com folga e deixar a noite reservada para CityWalk.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Roteiro do dia</div>
+<div class="card-value">
+<div class="mini-timeline">
+<div class="tl-row"><span class="tl-time">Manhã</span><span class="tl-text">Fechar malas e fazer a troca de hotel.</span></div>
+<div class="tl-row"><span class="tl-time">Tarde</span><span class="tl-text">Check-in / descanso no Universal's Aventura Hotel.</span></div>
+<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Bigfire Universal CityWalk — 19h.</span></div>
+</div>
+</div>
+</div>
+<div class="info-card reservation-card universal span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/bigfire" rel="noopener noreferrer" target="_blank">Bigfire Universal CityWalk</a></div>
+<span class="res-time-pill">19h00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FASE UNIVERSAL -->
+<div class="phase-divider universal">
+<div class="phase-divider-line"></div>
+<span class="phase-divider-label">Fase Universal · 13–20/05</span>
+<div class="phase-divider-line"></div>
+</div>
+<div class="hotel-phase-card"><strong>Hospedagem Universal:</strong> 12–20/05 · Universal's Aventura Hotel</div>
+<!-- DAY 08 -->
+<section class="day-block" id="day-08">
+<div class="day-eyebrow">
+<span class="day-number">Dia 08</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-universal">Universal</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">13</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Islands of Adventure</div>
+<div class="day-weekday">Quarta-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>8h00</strong><div class="early-note">Pelo app da Universal: Islands abre 9h–20h, com Early Park Admission às 8h. Mirar saída do hotel por volta de 7h20–7h30.</div></div>
+</div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Aproveitar o dia mais longo de Islands, priorizando Hogsmeade, atrações principais e o almoço no Mythos às 15h.</div>
+</div>
+<div class="info-card reservation-card universal span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/mythos-restaurant" rel="noopener noreferrer" target="_blank">Mythos Restaurant</a></div>
+<span class="res-time-pill">15h00</span>
+</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>Pumpkin Juice</strong> — <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/hogs-head" rel="noopener noreferrer" target="_blank">Hog's Head</a> / <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/three-broomsticks" rel="noopener noreferrer" target="_blank">Three Broomsticks</a> em Hogsmeade. Melhor "extra" além da Butterbeer.<br/><br/>
+<strong><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/three-broomsticks" rel="noopener noreferrer" target="_blank">Three Broomsticks</a></strong> — Vale pela ambientação. Ideal como café da manhã (cardápio até 10h30) ou parada leve. Pratos britânicos clássicos no restante do dia.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 09 -->
+<section class="day-block" id="day-09">
+<div class="day-eyebrow">
+<span class="day-number">Dia 09</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-universal">Universal</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">14</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Universal Studios</div>
+<div class="day-weekday">Quinta-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Horário / chegada</div>
+<div class="card-value"><strong>10h00–20h00</strong><div class="early-note">Pelo app da Universal, não aparece Early Park Admission para Universal Studios neste dia. Mirar saída do hotel por volta de 9h15–9h30.</div></div>
+</div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Priorizar Diagon Alley, Leaky Cauldron e snacks/bebidas do mundo Harry Potter em um dia mais leve, sem corrida de Early Admission.</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>1. <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/leaky-cauldron" rel="noopener noreferrer" target="_blank">Leaky Cauldron</a></strong> — Diagon Alley. Comida britânica: bangers and mash, fisherman's pie, toad in the hole, ploughman's platter. A refeição temática que mais vale a pena.<br/><br/>
+<strong>2. <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/florean-fortescues-ice-cream-parlour" rel="noopener noreferrer" target="_blank">Florean Fortescue's Ice-Cream Parlour</a></strong> — Parada obrigatória de doce. Sabores: Butterbeer, Granny Smith, Earl Grey e Lavender.<br/><br/>
+<strong>3. Butterbeer</strong> — Vale testar pelo menos uma vez. Disponível em <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/the-hopping-pot" rel="noopener noreferrer" target="_blank">The Hopping Pot</a>, <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/the-fountain-of-fair-fortune" rel="noopener noreferrer" target="_blank">Fountain of Fair Fortune</a> e Leaky Cauldron.<br/><br/>
+<strong>4. <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/the-hopping-pot" rel="noopener noreferrer" target="_blank">The Hopping Pot</a></strong> — Hot Butterbeer, Tongue Tying Lemon Squash, Otter's Fizzy Orange Juice e Fishy Green Ale.<br/><br/>
+<strong>5. <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/the-fountain-of-fair-fortune" rel="noopener noreferrer" target="_blank">Fountain of Fair Fortune</a></strong> — Butterbeer, Frozen Butterbeer, Pumpkin Juice e Butterbeer Soft Serve Ice Cream.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 10 -->
+<section class="day-block" id="day-10">
+<div class="day-eyebrow">
+<span class="day-number">Dia 10</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-shopping">Compras</span>
+<span class="status-badge st-optional">Flexível</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">15</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">The Mall at Millenia</div>
+<div class="day-weekday">Sexta-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Dia mais leve para compras no <a class="action-link" href="https://www.mallatmillenia.com/" target="_blank" rel="noopener noreferrer">The Mall at Millenia</a> e descanso entre parques.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Endereço / mapa</div>
+<div class="card-value"><a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=4200+Conroy+Road,+Orlando,+FL+32839" rel="noopener noreferrer" target="_blank">Abrir no mapa</a> — 4200 Conroy Road, Orlando, FL 32839.</div>
+</div>
+<div class="info-card span2">
+<div class="card-label">Almoço</div>
+<div class="card-value"><a href="https://shakeshack.com/location/i-drive-fl" rel="noopener noreferrer" target="_blank">Shake Shack</a></div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+            Manhã tranquila → tarde no <a href="https://www.mallatmillenia.com/" target="_blank" rel="noopener noreferrer">The Mall at Millenia</a> → almoço no <a href="https://shakeshack.com/location/i-drive-fl" rel="noopener noreferrer" target="_blank">Shake Shack</a><br/>
+            Noite: <a href="https://www.mallatmillenia.com/retailer/earls-kitchen-bar/" rel="noopener noreferrer" target="_blank">Earls Kitchen + Bar</a><br/>
+            Opcional: ICON Park / Orlando Eye
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 11 -->
+<section class="day-block" id="day-11">
+<div class="day-eyebrow">
+<span class="day-number">Dia 11</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-universal">Universal</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">16</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Epic Universe</div>
+<div class="day-weekday">Sábado</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card early-card">
+<div class="card-label">Entrada antecipada</div>
+<div class="card-value"><strong>9h</strong><div class="early-note">Epic Universe costuma abrir às 10h — com Early Park Admission, mirar 9h.</div></div>
+</div>
+<div class="info-card priority-card">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Explorar Epic Universe com foco nas áreas novas e uma refeição principal planejada.</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>Refeição principal:</strong> <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/cafe-lair-de-la-sirene" rel="noopener noreferrer" target="_blank">Café L'air De La Sirène</a><br/>
+<strong>Snack opcional:</strong> <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/star-sui-bao" rel="noopener noreferrer" target="_blank">Star Sui Bao</a><br/>
+<strong>Drink no fim do dia:</strong> <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/celestiki" rel="noopener noreferrer" target="_blank">CelesTiki</a>
+</div>
+</details>
+</div>
+</section>
+<!-- DAY 12 -->
+<section class="day-block" id="day-12">
+<div class="day-eyebrow">
+<span class="day-number">Dia 12</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-universal">Universal</span>
+<span class="status-badge st-optional">Flexível</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">17</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Hogwarts Express</div>
+<div class="day-weekday">Domingo</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card span2">
+<div class="card-label">Programa do dia</div>
+<div class="card-value">Repetir Universal / Hogwarts Express. Com os horários do app, a melhor estratégia é começar em Islands of Adventure usando Early Park Admission às 8h e depois seguir para Universal Studios.</div>
+</div>
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Usar como dia de repetição e encaixar Hogwarts Express de Hogsmeade para Diagon Alley, aproveitando Early Admission em Islands.</div>
+</div>
+<div class="info-card span2">
+<div class="card-label">Almoço</div>
+<div class="card-value"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/today-cafe" rel="noopener noreferrer" target="_blank">TODAY Cafe</a></div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões — Como organizar o dia</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+            1. Começar no Universal Studios Florida<br/>
+            2. <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/today-cafe" rel="noopener noreferrer" target="_blank">TODAY Cafe</a> como café da manhã ou lanche leve (pastries, salads, sandwiches, specialty coffees)<br/>
+            3. Aproveitar Diagon Alley → pegar Hogwarts Express para Hogsmeade<br/>
+            4. Continuar o dia no Islands of Adventure<br/>
+            5. Doce no final: <a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/san-francisco-pastry-company" rel="noopener noreferrer" target="_blank">San Francisco Pastry Company</a> (layer cakes, éclairs, pies, cookies e muffins)
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 13 -->
+<section class="day-block" id="day-13">
+<div class="day-eyebrow">
+<span class="day-number">Dia 13</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-other">Passeio</span>
+<span class="status-badge st-confirmed">Confirmado</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">18</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Kennedy Space Center</div>
+<div class="day-weekday">Segunda-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Apollo/Saturn V Center, Space Shuttle Atlantis, Rocket Garden e Gateway.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Plano de saída / ponto de encontro</div>
+<div class="card-value">
+<div class="mini-timeline">
+<div class="tl-row"><span class="tl-time">7h20</span><span class="tl-text"><strong>Chamar Uber</strong> no Universal's Aventura Hotel. Estimativa prática até o ICON Park: 10–15 min, com margem para espera/trânsito.</span></div>
+<div class="tl-row"><span class="tl-time">7h30</span><span class="tl-text"><strong>Horário-limite para sair do hotel.</strong></span></div>
+<div class="tl-row"><span class="tl-time">7h50</span><span class="tl-text">Chegar ao ponto de encontro com 10 minutos de antecedência.</span></div>
+<div class="tl-row"><span class="tl-time">8h00</span><span class="tl-text"><strong>Saída do transporte Gray Line</strong>.</span></div>
+<div class="tl-row"><span class="tl-time">Atenção</span><span class="tl-text"><strong>O ponto de encontro é no ICON Park, não no hotel.</strong></span></div>
+<div class="tl-row"><span class="tl-time">Local</span><span class="tl-text">Rear of ICON 360 Park, voltado para a Universal Blvd, embaixo da The Wheel. <a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=8375+International+Drive,+Orlando,+FL" rel="noopener noreferrer" target="_blank">Abrir mapa</a> — 8375 International Drive, Orlando.</span></div>
+<div class="tl-row"><span class="tl-time">Voucher</span><span class="tl-text">Não precisa imprimir: mostrar o voucher no celular/tablet ao guia ao embarcar.</span></div>
+<div class="tl-row"><span class="tl-time">Ingresso</span><span class="tl-text">O guia entrega diretamente o ingresso do Kennedy Space Center; não retirar na bilheteria do KSC.</span></div>
+</div>
+</div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>Almoço:</strong> <a href="https://www.kennedyspacecenter.com/explore-attractions/dining-shopping/" rel="noopener noreferrer" target="_blank">Orbit Cafe</a> ou <a href="https://www.kennedyspacecenter.com/explore-attractions/dining-shopping/" rel="noopener noreferrer" target="_blank">Moon Rock Cafe</a> no próprio complexo.<br/><br/>
+<strong>Noite:</strong> ICON Park → <a href="https://www.iconparkorlando.com/tenant/yard-house/" rel="noopener noreferrer" target="_blank">Yard House</a> ou <a href="https://www.iconparkorlando.com/tenant/gordon-ramsay-fish-chips/" rel="noopener noreferrer" target="_blank">Gordon Ramsay Fish &amp; Chips</a>. Orlando Eye só se ainda tiver energia.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 14 -->
+<section class="day-block" id="day-14">
+<div class="day-eyebrow">
+<span class="day-number">Dia 14</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-shopping">Compras</span>
+<span class="status-badge st-decide">A decidir</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">19</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Dia livre</div>
+<div class="day-weekday">Terça-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Escolher entre último passeio bonito, compras finais ou Disney Springs conforme energia.</div>
+</div>
+<div class="info-card span2">
+<div class="card-label">Almoço</div>
+<div class="card-value"><a href="https://restaurants.fiveguys.com/fl/orlando" rel="noopener noreferrer" target="_blank">Five Guys</a></div>
+</div>
+<details class="info-card suggestion-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Sugestões</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<strong>Opção 1 — Mais relaxado:</strong> Winter Park + Scenic Boat Tour (diariamente 10h–16h, US$ 20/adulto) + <a href="https://restaurants.fiveguys.com/fl/orlando" rel="noopener noreferrer" target="_blank">Five Guys</a><br/><br/>
+<strong>Opção 2 — Mais compras:</strong> <a href="https://www.premiumoutlets.com/outlet/orlando-international" target="_blank" rel="noopener noreferrer">Orlando International Premium Outlets</a> + <a href="https://restaurants.fiveguys.com/fl/orlando" rel="noopener noreferrer" target="_blank">Five Guys</a> no almoço + <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> (tapas espanholas, paella e sangria) se ainda tiver energia.
+<br/><br/>
+<strong>Endereço da opção de compras:</strong> <a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=4951+International+Drive,+Orlando,+FL+32819" rel="noopener noreferrer" target="_blank">Abrir Orlando International no mapa</a> — 4951 International Drive, Orlando, FL 32819.
+          </div>
+</details>
+</div>
+</section>
+<!-- DAY 15 -->
+<section class="day-block" id="day-15">
+<div class="day-eyebrow">
+<span class="day-number">Dia 15</span>
+<div class="day-line"></div>
+<span class="day-category-pill pill-shopping">Viagem</span>
+<span class="status-badge st-logistics">Logística</span>
+</div>
+<div class="day-title-row">
+<div class="day-date-block"><span class="day-date-day">20</span><span class="day-date-month">Mai</span></div>
+<div class="day-heading">
+<div class="day-program">Checkout / MCO</div>
+<div class="day-weekday">Quarta-feira</div>
+<div class="day-hotel">🏨 Universal's Aventura Hotel</div>
+</div>
+</div>
+<div class="day-content">
+<div class="info-card priority-card span2">
+<div class="card-label">Prioridade</div>
+<div class="card-value">Checkout simples: malas, almoço no Five Guys e saída para o MCO com bastante margem.</div>
+</div>
+<div class="info-card logistics-card span2">
+<div class="card-label">Plano objetivo do dia</div>
+<div class="card-value">
+<div class="mini-timeline">
+<div class="tl-row"><span class="tl-time">12h00</span><span class="tl-text">Checkout e deixar malas com o hotel.</span></div>
+<div class="tl-row"><span class="tl-time">Almoço</span><span class="tl-text"><strong><a href="https://restaurants.fiveguys.com/8031-turkey-lake-rd" rel="noopener noreferrer" target="_blank">Five Guys Turkey Lake Rd</a></strong>. <a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=8031+Turkey+Lake+Rd+Suite+100,+Orlando,+FL+32819" rel="noopener noreferrer" target="_blank">Abrir no mapa</a> — 8031 Turkey Lake Rd, Suite 100, Orlando, FL 32819.</span></div>
+<div class="tl-row"><span class="tl-time">17h45</span><span class="tl-text">Voltar ao hotel e pegar as malas.</span></div>
+<div class="tl-row"><span class="tl-time">18h00</span><span class="tl-text">Sair para o MCO entre 18h e 18h15.</span></div>
+<div class="tl-row"><span class="tl-time">19h00</span><span class="tl-text">Chegar ao aeroporto com bastante margem para o voo das 22h.</span></div>
+<div class="tl-row"><span class="tl-time">22h00</span><span class="tl-text">Voo em MCO.</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<a class="back-top" href="#">↑ Topo</a>
+<script>
+  // ── COUNTDOWN ────────────────────────────────────────────────
+  (function() {
+    const START = new Date('2026-05-06T00:00:00');
+    const END   = new Date('2026-05-20T23:59:59');
+    const wrap  = document.getElementById('countdown-wrap');
+    const num   = document.getElementById('countdown-number');
+    const lbl   = document.getElementById('countdown-label');
+
+    function update() {
+      const now  = new Date();
+      if (now >= START && now <= END) {
+        const dayNum = Math.floor((now - START) / 86400000) + 1;
+        wrap.classList.add('traveling');
+        num.textContent = 'Dia ' + dayNum;
+        lbl.innerHTML = 'de 15<br/>Você está em Orlando!';
+      } else if (now < START) {
+        const diff = Math.ceil((START - now) / 86400000);
+        num.textContent = diff;
+        lbl.innerHTML = diff === 1 ? 'dia para<br/>a viagem' : 'dias para<br/>a viagem';
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
+    update();
+  })();
+
+
+  // ── HOJE / PRÓXIMO COMPROMISSO ──────────────────────────────
+  (function() {
+    const days = [
+      {date:'2026-05-06', title:'Magic Kingdom', detail:"06/05 · Quarta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-01'},
+      {date:'2026-05-07', title:'Hollywood Studios', detail:"07/05 · Quinta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-02'},
+      {date:'2026-05-08', title:'Animal Kingdom', detail:"08/05 · Sexta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-03'},
+      {date:'2026-05-09', title:'Outlets / Morimoto', detail:"09/05 · Sábado · Disney's Port Orleans Resort - French Quarter", href:'#day-04'},
+      {date:'2026-05-10', title:'EPCOT', detail:"10/05 · Domingo · Disney's Port Orleans Resort - French Quarter", href:'#day-05'},
+      {date:'2026-05-11', title:'Disney Springs', detail:"11/05 · Segunda-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-06'},
+      {date:'2026-05-12', title:'Troca de hotel', detail:"12/05 · Terça-feira · Port Orleans → Universal's Aventura Hotel", href:'#day-07'},
+      {date:'2026-05-13', title:'Islands of Adventure', detail:"13/05 · Quarta-feira · Universal's Aventura Hotel", href:'#day-08'},
+      {date:'2026-05-14', title:'Universal Studios', detail:"14/05 · Quinta-feira · Universal's Aventura Hotel", href:'#day-09'},
+      {date:'2026-05-15', title:'The Mall at Millenia', detail:"15/05 · Sexta-feira · Universal's Aventura Hotel", href:'#day-10'},
+      {date:'2026-05-16', title:'Epic Universe', detail:"16/05 · Sábado · Universal's Aventura Hotel", href:'#day-11'},
+      {date:'2026-05-17', title:'Hogwarts Express', detail:"17/05 · Domingo · Universal's Aventura Hotel", href:'#day-12'},
+      {date:'2026-05-18', title:'Kennedy Space Center', detail:"18/05 · Segunda-feira · Universal's Aventura Hotel", href:'#day-13'},
+      {date:'2026-05-19', title:'Dia livre', detail:"19/05 · Terça-feira · Universal's Aventura Hotel", href:'#day-14'},
+      {date:'2026-05-20', title:'Checkout / MCO', detail:"20/05 · Quarta-feira · Universal's Aventura Hotel", href:'#day-15'}
+    ];
+    const reservations = [
+      {at:'2026-05-06T15:00:00', title:'Be Our Guest', detail:'06/05 · 15h00 · Magic Kingdom', href:'#day-01'},
+      {at:'2026-05-07T15:15:00', title:"Oga's Cantina", detail:'07/05 · 15h15 · Hollywood Studios', href:'#day-02'},
+      {at:'2026-05-09T21:00:00', title:'Morimoto', detail:'09/05 · 21h00 · Disney Springs', href:'#day-04'},
+      {at:'2026-05-10T15:00:00', title:'Teppan Edo', detail:'10/05 · 15h00 · EPCOT', href:'#day-05'},
+      {at:'2026-05-12T19:00:00', title:'Bigfire', detail:'12/05 · 19h00 · CityWalk', href:'#day-07'},
+      {at:'2026-05-13T15:00:00', title:'Mythos', detail:'13/05 · 15h00 · Islands of Adventure', href:'#day-08'}
+    ];
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const now = new Date();
+    const today = days.find(d => d.date === todayKey);
+    const upcomingDay = days.find(d => d.date >= todayKey) || days[days.length - 1];
+    const selectedDay = today || upcomingDay;
+    const title = document.getElementById('today-title');
+    const detail = document.getElementById('today-detail');
+    const link = document.getElementById('today-link');
+    if (title && selectedDay) title.textContent = (today ? 'Hoje: ' : 'Próximo dia planejado: ') + selectedDay.title;
+    if (detail && selectedDay) detail.textContent = selectedDay.detail;
+    if (link && selectedDay) link.href = selectedDay.href;
+    const next = reservations.find(r => new Date(r.at) >= now);
+    const rt = document.getElementById('next-reservation-title');
+    const rd = document.getElementById('next-reservation-detail');
+    const rl = document.getElementById('next-reservation-link');
+    if (next) { if (rt) rt.textContent = next.title; if (rd) rd.textContent = next.detail; if (rl) rl.href = next.href; }
+    else { if (rt) rt.textContent = 'Sem próximas reservas'; if (rd) rd.textContent = 'As reservas cadastradas já passaram.'; if (rl) rl.href = '#reservations'; }
+  })();
+
+  // ── TODAY HIGHLIGHT NA SIDEBAR ───────────────────────────────
+  (function() {
+    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    document.querySelectorAll('.sidebar-nav a[data-date]').forEach(function(a) {
+      if (a.dataset.date === today) {
+        a.classList.add('is-today');
+        const pill = document.createElement('span');
+        pill.className = 'today-pill';
+        pill.textContent = 'hoje';
+        a.insertBefore(pill, a.querySelector('.nav-date'));
+      }
+    });
+  })();
+</script>
+</body>
+</html>
