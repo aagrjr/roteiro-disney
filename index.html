@@ -424,20 +424,35 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     cursor: pointer;
     user-select: none;
     list-style: none;
   }
   .suggestion-toggle::-webkit-details-marker { display: none; }
-  .suggestion-toggle .toggle-icon {
-    font-size: 11px;
-    color: var(--muted);
-    transition: transform .2s;
+  .suggestion-toggle .toggle-icon { display: none; }
+  .suggestion-toggle::after {
+    content: "Ver detalhes ▾";
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid #4a3500;
+    background: rgba(251,191,36,.08);
+    color: #fcd34d;
     font-family: -apple-system, sans-serif;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .02em;
   }
-  details.suggestion-card[open] .toggle-icon { transform: rotate(180deg); }
-  .suggestion-body { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.06); }
+  details.suggestion-card[open] { border-color: #6b4b00; }
+  details.suggestion-card[open] .suggestion-toggle::after {
+    content: "Ocultar detalhes ▴";
+    background: rgba(251,191,36,.16);
+    border-color: #8a6500;
+  }
+  .suggestion-body { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(251,191,36,.18); }
 
   /* timeline inside card */
   .mini-timeline { display: grid; gap: 10px; }
@@ -482,6 +497,32 @@
   .reservation-tile:hover { border-color: #4a5568; }
   .reservation-tile-name { display: block; font-weight: 800; font-size: 14px; }
   .reservation-tile-info { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+
+  /* ── DESKTOP-ONLY PLANNING PANEL ─────────── */
+  .desktop-only { display: block; }
+  .desktop-extra-section { margin: 0 0 42px; }
+  .desktop-extra-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .desktop-extra-title { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+  .desktop-extra-subtitle { font-family: -apple-system, sans-serif; color: var(--muted); font-size: 12px; }
+  .desktop-extra-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .desktop-extra-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; font-family: -apple-system, sans-serif; }
+  .desktop-extra-card.span2 { grid-column: span 2; }
+  .desktop-extra-card h3 { font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
+  .desktop-extra-list { display: grid; gap: 9px; list-style: none; }
+  .desktop-extra-list li { color: var(--text); font-size: 13px; line-height: 1.45; }
+  .desktop-extra-list strong { color: #f8fafc; }
+  .desktop-extra-list a { color: #60a5fa; text-decoration: none; font-weight: 700; }
+  .desktop-extra-list a:hover { text-decoration: underline; }
+  .desktop-mini-table { width: 100%; border-collapse: collapse; font-family: -apple-system, sans-serif; font-size: 13px; }
+  .desktop-mini-table th, .desktop-mini-table td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .desktop-mini-table th { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 900; }
+  .desktop-mini-table tr:last-child td { border-bottom: 0; }
+  .desktop-note { color: var(--muted); font-size: 12px; line-height: 1.45; margin-top: 10px; }
+  .desktop-address-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .desktop-address-item { border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; background: var(--bg); }
+  .desktop-address-name { display: block; font-weight: 800; font-size: 13px; margin-bottom: 3px; }
+  .desktop-address-text { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; }
 
   /* ── HOTEL PHASE CARDS ───────────────────── */
   .hotel-phase-card { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 13px 16px; margin: -20px 0 34px; font-family: -apple-system, sans-serif; color: var(--muted); font-size: 13px; }
@@ -545,6 +586,7 @@
     .trip-status-title { font-size: 18px; }
     .reservation-section { margin-bottom: 30px; }
     .reservation-section-header { align-items: flex-start; flex-direction: column; gap: 3px; }
+    .desktop-only { display: none !important; }
     .reservation-grid { grid-template-columns: 1fr; }
     .hotel-phase-card { margin: -18px 0 28px; }
   }
@@ -683,6 +725,76 @@
 <a class="reservation-tile" href="#day-08"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
 </div>
 </section>
+<!-- PAINEL EXTRA DESKTOP -->
+<section aria-label="Informações extras para planejamento no desktop" class="desktop-extra-section desktop-only">
+  <div class="desktop-extra-header">
+    <h2 class="desktop-extra-title">Painel de planejamento</h2>
+    <span class="desktop-extra-subtitle">Informações extras exibidas apenas no computador</span>
+  </div>
+  <div class="desktop-extra-grid">
+    <div class="desktop-extra-card">
+      <h3>Pendências finais</h3>
+      <ul class="desktop-extra-list">
+        <li><strong>19/05:</strong> escolher entre Winter Park + Scenic Boat Tour ou Orlando International Premium Outlets.</li>
+        <li><strong>Universal:</strong> conferir horários dos parques no app mais perto da viagem.</li>
+        <li><strong>Reservas:</strong> revisar os horários nos apps Disney/Universal antes de cada dia.</li>
+      </ul>
+    </div>
+
+    <div class="desktop-extra-card">
+      <h3>Plano por hotel</h3>
+      <ul class="desktop-extra-list">
+        <li><strong>06–12/05 · Disney:</strong> Disney's Port Orleans Resort - French Quarter. Base para Disney, Vineland, Disney Springs e Morimoto.</li>
+        <li><strong>12–20/05 · Universal:</strong> Universal's Aventura Hotel. Base para Universal, Kennedy, Mall at Millenia e MCO.</li>
+      </ul>
+    </div>
+
+    <div class="desktop-extra-card span2">
+      <h3>Reservas por ordem cronológica</h3>
+      <table class="desktop-mini-table" aria-label="Reservas por ordem cronológica">
+        <thead><tr><th>Data</th><th>Hora</th><th>Reserva</th><th>Local</th></tr></thead>
+        <tbody>
+          <tr><td>06/05</td><td>15h00</td><td>Be Our Guest</td><td>Magic Kingdom</td></tr>
+          <tr><td>07/05</td><td>15h15</td><td>Oga's Cantina</td><td>Hollywood Studios</td></tr>
+          <tr><td>09/05</td><td>21h00</td><td>Morimoto</td><td>Disney Springs</td></tr>
+          <tr><td>10/05</td><td>15h00</td><td>Teppan Edo</td><td>EPCOT</td></tr>
+          <tr><td>12/05</td><td>19h00</td><td>Bigfire</td><td>Universal CityWalk</td></tr>
+          <tr><td>13/05</td><td>15h00</td><td>Mythos</td><td>Islands of Adventure</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="desktop-extra-card span2">
+      <h3>Endereços importantes</h3>
+      <div class="desktop-address-grid">
+        <div class="desktop-address-item"><span class="desktop-address-name">Disney's Port Orleans Resort - French Quarter</span><span class="desktop-address-text">2201 Orleans Dr, Lake Buena Vista, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">Universal's Aventura Hotel</span><span class="desktop-address-text">6725 Adventure Way, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">Orlando Vineland Premium Outlets</span><span class="desktop-address-text">8200 Vineland Ave, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">The Mall at Millenia</span><span class="desktop-address-text">4200 Conroy Rd, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">ICON Park / ponto Gray Line</span><span class="desktop-address-text">8375 International Dr, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">Orlando International Premium Outlets</span><span class="desktop-address-text">4951 International Dr, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">Five Guys Turkey Lake Rd</span><span class="desktop-address-text">8031 Turkey Lake Rd, Suite 100, Orlando, FL</span></div>
+        <div class="desktop-address-item"><span class="desktop-address-name">MCO</span><span class="desktop-address-text">Orlando International Airport</span></div>
+      </div>
+    </div>
+
+    <div class="desktop-extra-card span2">
+      <h3>Deslocamentos importantes</h3>
+      <table class="desktop-mini-table" aria-label="Deslocamentos importantes">
+        <thead><tr><th>Trajeto</th><th>Estimativa</th><th>Uso no roteiro</th></tr></thead>
+        <tbody>
+          <tr><td>Aventura → ICON Park</td><td>10–15 min de Uber</td><td>Saída Kennedy / Gray Line</td></tr>
+          <tr><td>Aventura → MCO</td><td>25–35 min de Uber</td><td>Dia do checkout e voo</td></tr>
+          <tr><td>Port Orleans → Vineland</td><td>15–25 min de Uber</td><td>Dia 09/05</td></tr>
+          <tr><td>Port Orleans → Disney Springs</td><td>10–15 min</td><td>Morimoto e Disney Springs</td></tr>
+          <tr><td>Aventura → The Mall at Millenia</td><td>15–25 min de Uber</td><td>Dia 15/05</td></tr>
+        </tbody>
+      </table>
+      <p class="desktop-note">Estimativas apenas para planejamento; conferir trânsito e disponibilidade no momento.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FASE DISNEY -->
 <div class="phase-divider disney">
 <div class="phase-divider-line"></div>
