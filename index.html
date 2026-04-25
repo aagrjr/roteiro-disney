@@ -499,6 +499,25 @@
   .reservation-tile-info { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
 
 
+  /* ── FLIGHTS SECTION ─────────────────────── */
+  .flights-section { margin: -12px 0 38px; }
+  .flights-section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .flights-section-title { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+  .flights-section-subtitle { font-family: -apple-system, sans-serif; color: var(--muted); font-size: 12px; }
+  .flights-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .flight-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; font-family: -apple-system, sans-serif; }
+  .flight-card.departure { border-color: rgba(96,165,250,.25); background: rgba(96,165,250,.06); }
+  .flight-card.return { border-color: rgba(52,211,153,.22); background: rgba(52,211,153,.05); }
+  .flight-card-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+  .flight-route { font-size: 17px; font-weight: 900; line-height: 1.25; letter-spacing: -.02em; }
+  .flight-meta { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+  .flight-times { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; margin-top: 14px; }
+  .flight-airport { display: block; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .flight-time { display: block; font-size: 24px; font-weight: 900; letter-spacing: -.03em; color: var(--text); line-height: 1; margin-top: 3px; }
+  .flight-arrow { color: var(--muted); font-weight: 900; }
+  .flight-note { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+
+
   /* ── DESKTOP-ONLY PLANNING PANEL ─────────── */
   .desktop-only { display: block; }
   .desktop-extra-section { margin: 0 0 42px; }
@@ -588,6 +607,7 @@
     .reservation-section-header { align-items: flex-start; flex-direction: column; gap: 3px; }
     .desktop-only { display: none !important; }
     .reservation-grid { grid-template-columns: 1fr; }
+    .flights-grid { grid-template-columns: 1fr; }
     .hotel-phase-card { margin: -18px 0 28px; }
   }
 
@@ -724,6 +744,37 @@
 <a class="reservation-tile" href="#day-07"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
 <a class="reservation-tile" href="#day-08"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
 </div>
+</section>
+<!-- VOOS -->
+<section aria-label="Voos da viagem" class="flights-section" id="flights">
+  <div class="flights-section-header">
+    <h2 class="flights-section-title">Voos</h2>
+    <span class="flights-section-subtitle">LATAM</span>
+  </div>
+  <div class="flights-grid">
+    <div class="flight-card departure">
+      <div class="flight-card-label">Ida · Terça, 05/05</div>
+      <div class="flight-route">São Paulo → Orlando</div>
+      <div class="flight-meta">LA 8186</div>
+      <div class="flight-times">
+        <div><span class="flight-airport">GRU</span><span class="flight-time">11h40</span></div>
+        <div class="flight-arrow">→</div>
+        <div><span class="flight-airport">MCO</span><span class="flight-time">19h30</span></div>
+      </div>
+      <div class="flight-note">Chegada em Orlando na noite anterior ao primeiro dia de parque.</div>
+    </div>
+    <div class="flight-card return">
+      <div class="flight-card-label">Volta · Quarta, 20/05</div>
+      <div class="flight-route">Orlando → São Paulo</div>
+      <div class="flight-meta">LA 8187</div>
+      <div class="flight-times">
+        <div><span class="flight-airport">MCO</span><span class="flight-time">22h15</span></div>
+        <div class="flight-arrow">→</div>
+        <div><span class="flight-airport">GRU</span><span class="flight-time">07h40<sup>+1</sup></span></div>
+      </div>
+      <div class="flight-note">Chegada em São Paulo na manhã de quinta-feira, 21/05.</div>
+    </div>
+  </div>
 </section>
 <!-- PAINEL EXTRA DESKTOP -->
 <section aria-label="Informações extras para planejamento no desktop" class="desktop-extra-section desktop-only">
@@ -1381,7 +1432,7 @@
 <div class="day-content">
 <div class="info-card priority-card span2">
 <div class="card-label">Prioridade</div>
-<div class="card-value">Checkout simples: malas, almoço no Five Guys e saída para o MCO com bastante margem.</div>
+<div class="card-value">Checkout simples: malas, almoço no Five Guys e saída para o MCO com bastante margem para o voo LA 8187.</div>
 </div>
 <div class="info-card logistics-card span2">
 <div class="card-label">Plano objetivo do dia</div>
@@ -1391,8 +1442,9 @@
 <div class="tl-row"><span class="tl-time">Almoço</span><span class="tl-text"><strong><a href="https://restaurants.fiveguys.com/8031-turkey-lake-rd" rel="noopener noreferrer" target="_blank">Five Guys Turkey Lake Rd</a></strong>. <a class="action-link" href="https://www.google.com/maps/search/?api=1&amp;query=8031+Turkey+Lake+Rd+Suite+100,+Orlando,+FL+32819" rel="noopener noreferrer" target="_blank">Abrir no mapa</a> — 8031 Turkey Lake Rd, Suite 100, Orlando, FL 32819.</span></div>
 <div class="tl-row"><span class="tl-time">17h45</span><span class="tl-text">Voltar ao hotel e pegar as malas.</span></div>
 <div class="tl-row"><span class="tl-time">18h00</span><span class="tl-text">Sair para o MCO entre 18h e 18h15.</span></div>
-<div class="tl-row"><span class="tl-time">19h00</span><span class="tl-text">Chegar ao aeroporto com bastante margem para o voo das 22h.</span></div>
-<div class="tl-row"><span class="tl-time">22h00</span><span class="tl-text">Voo em MCO.</span></div>
+<div class="tl-row"><span class="tl-time">19h00</span><span class="tl-text">Chegar ao aeroporto com bastante margem para o voo das 22h15.</span></div>
+<div class="tl-row"><span class="tl-time">22h15</span><span class="tl-text">Voo <strong>LA 8187</strong> — MCO → GRU.</span></div>
+<div class="tl-row"><span class="tl-time">+1</span><span class="tl-text">Chegada em São Paulo prevista para 07h40 de 21/05.</span></div>
 </div>
 </div>
 </div>
