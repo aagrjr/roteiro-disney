@@ -508,6 +508,11 @@
   .flight-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; font-family: -apple-system, sans-serif; }
   .flight-card.departure { border-color: rgba(96,165,250,.25); background: rgba(96,165,250,.06); }
   .flight-card.return { border-color: rgba(52,211,153,.22); background: rgba(52,211,153,.05); }
+  .flight-card.arrival-food { border-color: rgba(251,191,36,.24); background: rgba(251,191,36,.055); grid-column: 1 / -1; }
+  .arrival-food-list { margin-top: 12px; display: grid; gap: 8px; }
+  .arrival-food-item { border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 10px 12px; background: rgba(0,0,0,.12); }
+  .arrival-food-name { display: block; font-size: 14px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+  .arrival-food-note { display: block; color: var(--muted); font-size: 12px; line-height: 1.45; }
   .flight-card-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
   .flight-route { font-size: 17px; font-weight: 900; line-height: 1.25; letter-spacing: -.02em; }
   .flight-meta { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.45; }
@@ -773,6 +778,21 @@
         <div><span class="flight-airport">GRU</span><span class="flight-time">07h40<sup>+1</sup></span></div>
       </div>
       <div class="flight-note">Chegada em São Paulo na manhã de quinta-feira, 21/05.</div>
+    </div>
+    <div class="flight-card arrival-food">
+      <div class="flight-card-label">Chegada · Terça, 05/05</div>
+      <div class="flight-route">Jantar / lanche perto do hotel</div>
+      <div class="flight-meta">Plano flexível para depois de imigração, bagagem, transporte e check-in.</div>
+      <div class="arrival-food-list">
+        <div class="arrival-food-item">
+          <span class="arrival-food-name"><a href="https://disneyworld.disney.go.com/dining/port-orleans-resort-french-quarter/sassagoula-floatworks-and-food-factory/" target="_blank" rel="noopener noreferrer">Sassagoula Floatworks and Food Factory</a></span>
+          <span class="arrival-food-note">Opção mais prática: quick service dentro do Disney's Port Orleans Resort - French Quarter.</span>
+        </div>
+        <div class="arrival-food-item">
+          <span class="arrival-food-name"><a href="https://disneyworld.disney.go.com/dining/port-orleans-resort-french-quarter/scat-cats-club-cafe/" target="_blank" rel="noopener noreferrer">Scat Cat's Club Café</a></span>
+          <span class="arrival-food-note">Se ainda tiverem energia: beignets como sobremesa/lanche de chegada.</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
