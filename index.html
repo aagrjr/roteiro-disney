@@ -268,8 +268,8 @@
   .main { padding: 40px 48px 80px; width: 100%; min-width: 0; }
 
 
-  .summary-collapsible {
-    background: var(--surface);
+  /* ── SUMMARY COLLAPSIBLE ────────────────────── */
+  .summary-collapsible {    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
     margin-bottom: 40px;
@@ -470,6 +470,7 @@
   }
   .action-link:hover { border-color: #7dd3fc; }
 
+  /* ── BACK TO TOP ─────────────────────────────── */
   .back-top {
     position: fixed; right: 24px; bottom: 24px;
     background: #e6edf3; color: #0d1117;
@@ -538,6 +539,7 @@
 
 
   /* ── DESKTOP-ONLY PLANNING PANEL ─────────── */
+  /* .desktop-only é visível por padrão; ocultado apenas no breakpoint mobile abaixo */
   .desktop-only { display: block; }
   .desktop-extra-section { margin: 0 0 42px; }
   .desktop-extra-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
@@ -624,13 +626,14 @@
     .trip-status-title { font-size: 18px; }
     .reservation-section { margin-bottom: 30px; }
     .reservation-section-header { align-items: flex-start; flex-direction: column; gap: 3px; }
-    .desktop-only { display: none !important; }
+    .desktop-only { display: none; }
     .reservation-grid { grid-template-columns: 1fr; }
     .flights-grid { grid-template-columns: 1fr; }
     .hotel-phase-card { margin: -18px 0 28px; }
   }
 
 
+  /* ── UTILITY ─────────────────────────────────── */
   .transport-suggestion .card-value strong { color: #bae6fd; }
 </style>
 </head>
@@ -645,8 +648,8 @@
 <span class="header-badge"><span style="color:#34d399">●</span> Passeio</span>
 </div>
 <div id="countdown-wrap">
-<span id="countdown-number">12</span>
-<span id="countdown-label">dias para<br/>a viagem</span>
+<span id="countdown-number"></span>
+<span id="countdown-label"></span>
 </div>
 </header>
 <!-- MOBILE DAY NAV -->
@@ -757,13 +760,13 @@
 <span class="reservation-section-subtitle">Atalho útil no celular</span>
 </div>
 <div class="reservation-grid">
-<a class="reservation-tile" href="#day-01"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom</span></a>
-<a class="reservation-tile" href="#day-02"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios</span></a>
-<a class="reservation-tile" href="#day-04"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs</span></a>
-<a class="reservation-tile" href="#day-05"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT</span></a>
-<a class="reservation-tile" href="#day-07"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
-<a class="reservation-tile" href="#day-08"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
-<a class="reservation-tile" href="#day-14"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
+<a class="reservation-tile" href="#day-01" data-at="2026-05-06T15:00:00" data-title="Be Our Guest" data-detail="06/05 · 15h00 · Magic Kingdom"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom</span></a>
+<a class="reservation-tile" href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios</span></a>
+<a class="reservation-tile" href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs</span></a>
+<a class="reservation-tile" href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT</span></a>
+<a class="reservation-tile" href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
+<a class="reservation-tile" href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
+<a class="reservation-tile" href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
 </div>
 </section>
 <!-- VOOS -->
@@ -951,7 +954,10 @@
 </div>
 <div class="hotel-phase-card"><strong>Hospedagem Disney:</strong> 06–12/05 · Disney's Port Orleans Resort - French Quarter</div>
 <!-- DAY 01 -->
-<section class="day-block" id="day-01">
+<section class="day-block" id="day-01"
+  data-date="2026-05-06"
+  data-title="Magic Kingdom"
+  data-detail="06/05 · Quarta-feira · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 01</span>
 <div class="day-line"></div>
@@ -995,7 +1001,10 @@
 </div>
 </section>
 <!-- DAY 02 -->
-<section class="day-block" id="day-02">
+<section class="day-block" id="day-02"
+  data-date="2026-05-07"
+  data-title="Hollywood Studios"
+  data-detail="07/05 · Quinta-feira · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 02</span>
 <div class="day-line"></div>
@@ -1040,7 +1049,10 @@
 </div>
 </section>
 <!-- DAY 03 -->
-<section class="day-block" id="day-03">
+<section class="day-block" id="day-03"
+  data-date="2026-05-08"
+  data-title="Animal Kingdom"
+  data-detail="08/05 · Sexta-feira · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 03</span>
 <div class="day-line"></div>
@@ -1078,7 +1090,10 @@
 </div>
 </section>
 <!-- DAY 04 -->
-<section class="day-block" id="day-04">
+<section class="day-block" id="day-04"
+  data-date="2026-05-09"
+  data-title="Outlets / Morimoto"
+  data-detail="09/05 · Sábado · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 04</span>
 <div class="day-line"></div>
@@ -1116,7 +1131,10 @@
 </div>
 </section>
 <!-- DAY 05 -->
-<section class="day-block" id="day-05">
+<section class="day-block" id="day-05"
+  data-date="2026-05-10"
+  data-title="EPCOT"
+  data-detail="10/05 · Domingo · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 05</span>
 <div class="day-line"></div>
@@ -1161,7 +1179,10 @@
 </div>
 </section>
 <!-- DAY 06 -->
-<section class="day-block" id="day-06">
+<section class="day-block" id="day-06"
+  data-date="2026-05-11"
+  data-title="Disney Springs"
+  data-detail="11/05 · Segunda-feira · Disney's Port Orleans Resort - French Quarter">
 <div class="day-eyebrow">
 <span class="day-number">Dia 06</span>
 <div class="day-line"></div>
@@ -1209,7 +1230,10 @@
 </div>
 </section>
 <!-- DAY 07 -->
-<section class="day-block" id="day-07">
+<section class="day-block" id="day-07"
+  data-date="2026-05-12"
+  data-title="Troca de hotel"
+  data-detail="12/05 · Terça-feira · Port Orleans → Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 07</span>
 <div class="day-line"></div>
@@ -1256,7 +1280,10 @@
 </div>
 <div class="hotel-phase-card"><strong>Hospedagem Universal:</strong> 12–20/05 · Universal's Aventura Hotel</div>
 <!-- DAY 08 -->
-<section class="day-block" id="day-08">
+<section class="day-block" id="day-08"
+  data-date="2026-05-13"
+  data-title="Islands of Adventure"
+  data-detail="13/05 · Quarta-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 08</span>
 <div class="day-line"></div>
@@ -1301,7 +1328,10 @@
 </div>
 </section>
 <!-- DAY 09 -->
-<section class="day-block" id="day-09">
+<section class="day-block" id="day-09"
+  data-date="2026-05-14"
+  data-title="Universal Studios"
+  data-detail="14/05 · Quinta-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 09</span>
 <div class="day-line"></div>
@@ -1341,7 +1371,10 @@
 </div>
 </section>
 <!-- DAY 10 -->
-<section class="day-block" id="day-10">
+<section class="day-block" id="day-10"
+  data-date="2026-05-15"
+  data-title="The Mall at Millenia"
+  data-detail="15/05 · Sexta-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 10</span>
 <div class="day-line"></div>
@@ -1383,7 +1416,10 @@
 </div>
 </section>
 <!-- DAY 11 -->
-<section class="day-block" id="day-11">
+<section class="day-block" id="day-11"
+  data-date="2026-05-16"
+  data-title="Epic Universe"
+  data-detail="16/05 · Sábado · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 11</span>
 <div class="day-line"></div>
@@ -1421,7 +1457,10 @@
 </div>
 </section>
 <!-- DAY 12 -->
-<section class="day-block" id="day-12">
+<section class="day-block" id="day-12"
+  data-date="2026-05-17"
+  data-title="Hogwarts Express"
+  data-detail="17/05 · Domingo · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 12</span>
 <div class="day-line"></div>
@@ -1465,7 +1504,10 @@
 </div>
 </section>
 <!-- DAY 13 -->
-<section class="day-block" id="day-13">
+<section class="day-block" id="day-13"
+  data-date="2026-05-18"
+  data-title="Kennedy Space Center"
+  data-detail="18/05 · Segunda-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 13</span>
 <div class="day-line"></div>
@@ -1510,7 +1552,10 @@
 </div>
 </section>
 <!-- DAY 14 -->
-<section class="day-block" id="day-14">
+<section class="day-block" id="day-14"
+  data-date="2026-05-19"
+  data-title="Winter Park"
+  data-detail="19/05 · Terça-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 14</span>
 <div class="day-line"></div>
@@ -1559,7 +1604,10 @@
 </div>
 </section>
 <!-- DAY 15 -->
-<section class="day-block" id="day-15">
+<section class="day-block" id="day-15"
+  data-date="2026-05-20"
+  data-title="Checkout / MCO"
+  data-detail="20/05 · Quarta-feira · Universal's Aventura Hotel">
 <div class="day-eyebrow">
 <span class="day-number">Dia 15</span>
 <div class="day-line"></div>
@@ -1599,88 +1647,100 @@
 </div>
 <a class="back-top" href="#">↑ Topo</a>
 <script>
-  // ── COUNTDOWN ────────────────────────────────────────────────
-  (function() {
+  // ── PONTO 2: scroll-margin-top dinâmico ─────────────────────
+  // Calcula a altura real do header + mobile nav em vez de hardcodar 138px.
+  (function applyScrollMargin() {
+    function update() {
+      const header    = document.querySelector('.site-header');
+      const mobileNav = document.querySelector('.mobile-day-nav');
+      const headerH   = header    ? header.offsetHeight    : 0;
+      const navH      = mobileNav ? mobileNav.offsetHeight : 0;
+      // Em mobile o mobile-day-nav é sticky logo abaixo do header
+      const isMobile  = window.innerWidth <= 900;
+      const margin    = headerH + (isMobile ? navH : 0) + 8; // +8px de folga visual
+      document.querySelectorAll('.day-block').forEach(function(el) {
+        el.style.scrollMarginTop = margin + 'px';
+      });
+      // A seção de reservas também precisa de margem
+      const reservations = document.getElementById('reservations');
+      if (reservations) reservations.style.scrollMarginTop = margin + 'px';
+    }
+    update();
+    window.addEventListener('resize', update);
+  })();
+
+  // ── PONTO 3: countdown sem valor hardcoded ───────────────────
+  (function initCountdown() {
     const START = new Date('2026-05-06T00:00:00');
     const END   = new Date('2026-05-20T23:59:59');
     const wrap  = document.getElementById('countdown-wrap');
     const num   = document.getElementById('countdown-number');
     const lbl   = document.getElementById('countdown-label');
+    if (!wrap || !num || !lbl) return;
 
-    function update() {
-      const now  = new Date();
-      if (now >= START && now <= END) {
-        const dayNum = Math.floor((now - START) / 86400000) + 1;
-        wrap.classList.add('traveling');
-        num.textContent = 'Dia ' + dayNum;
-        lbl.innerHTML = 'de 15<br/>Você está em Orlando!';
-      } else if (now < START) {
-        const diff = Math.ceil((START - now) / 86400000);
-        num.textContent = diff;
-        lbl.innerHTML = diff === 1 ? 'dia para<br/>a viagem' : 'dias para<br/>a viagem';
-      } else {
-        wrap.style.display = 'none';
-      }
-    }
-    update();
-  })();
-
-
-  // ── HOJE / PRÓXIMO COMPROMISSO ──────────────────────────────
-  (function() {
-    const days = [
-      {date:'2026-05-06', title:'Magic Kingdom', detail:"06/05 · Quarta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-01'},
-      {date:'2026-05-07', title:'Hollywood Studios', detail:"07/05 · Quinta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-02'},
-      {date:'2026-05-08', title:'Animal Kingdom', detail:"08/05 · Sexta-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-03'},
-      {date:'2026-05-09', title:'Outlets / Morimoto', detail:"09/05 · Sábado · Disney's Port Orleans Resort - French Quarter", href:'#day-04'},
-      {date:'2026-05-10', title:'EPCOT', detail:"10/05 · Domingo · Disney's Port Orleans Resort - French Quarter", href:'#day-05'},
-      {date:'2026-05-11', title:'Disney Springs', detail:"11/05 · Segunda-feira · Disney's Port Orleans Resort - French Quarter", href:'#day-06'},
-      {date:'2026-05-12', title:'Troca de hotel', detail:"12/05 · Terça-feira · Port Orleans → Universal's Aventura Hotel", href:'#day-07'},
-      {date:'2026-05-13', title:'Islands of Adventure', detail:"13/05 · Quarta-feira · Universal's Aventura Hotel", href:'#day-08'},
-      {date:'2026-05-14', title:'Universal Studios', detail:"14/05 · Quinta-feira · Universal's Aventura Hotel", href:'#day-09'},
-      {date:'2026-05-15', title:'The Mall at Millenia', detail:"15/05 · Sexta-feira · Universal's Aventura Hotel", href:'#day-10'},
-      {date:'2026-05-16', title:'Epic Universe', detail:"16/05 · Sábado · Universal's Aventura Hotel", href:'#day-11'},
-      {date:'2026-05-17', title:'Hogwarts Express', detail:"17/05 · Domingo · Universal's Aventura Hotel", href:'#day-12'},
-      {date:'2026-05-18', title:'Kennedy Space Center', detail:"18/05 · Segunda-feira · Universal's Aventura Hotel", href:'#day-13'},
-      {date:'2026-05-19', title:'Winter Park', detail:"19/05 · Terça-feira · Universal's Aventura Hotel", href:'#day-14'},
-      {date:'2026-05-20', title:'Checkout / MCO', detail:"20/05 · Quarta-feira · Universal's Aventura Hotel", href:'#day-15'}
-    ];
-    const reservations = [
-      {at:'2026-05-06T15:00:00', title:'Be Our Guest', detail:'06/05 · 15h00 · Magic Kingdom', href:'#day-01'},
-      {at:'2026-05-07T15:15:00', title:"Oga's Cantina", detail:'07/05 · 15h15 · Hollywood Studios', href:'#day-02'},
-      {at:'2026-05-09T21:00:00', title:'Morimoto', detail:'09/05 · 21h00 · Disney Springs', href:'#day-04'},
-      {at:'2026-05-10T15:00:00', title:'Teppan Edo', detail:'10/05 · 15h00 · EPCOT', href:'#day-05'},
-      {at:'2026-05-12T19:00:00', title:'Bigfire', detail:'12/05 · 19h00 · CityWalk', href:'#day-07'},
-      {at:'2026-05-13T15:00:00', title:'Mythos', detail:'13/05 · 15h00 · Islands of Adventure', href:'#day-08'},
-      {at:'2026-05-19T13:30:00', title:'Café com Pilar', detail:'19/05 · 13h30 · Kissimmee', href:'#day-14'}
-    ];
-    const todayKey = new Date().toISOString().slice(0, 10);
     const now = new Date();
-    const today = days.find(d => d.date === todayKey);
-    const upcomingDay = days.find(d => d.date >= todayKey) || days[days.length - 1];
-    const selectedDay = today || upcomingDay;
-    const title = document.getElementById('today-title');
-    const detail = document.getElementById('today-detail');
-    const link = document.getElementById('today-link');
-    if (title && selectedDay) title.textContent = (today ? 'Hoje: ' : 'Próximo dia planejado: ') + selectedDay.title;
-    if (detail && selectedDay) detail.textContent = selectedDay.detail;
-    if (link && selectedDay) link.href = selectedDay.href;
-    const next = reservations.find(r => new Date(r.at) >= now);
-    const rt = document.getElementById('next-reservation-title');
-    const rd = document.getElementById('next-reservation-detail');
-    const rl = document.getElementById('next-reservation-link');
-    if (next) { if (rt) rt.textContent = next.title; if (rd) rd.textContent = next.detail; if (rl) rl.href = next.href; }
-    else { if (rt) rt.textContent = 'Sem próximas reservas'; if (rd) rd.textContent = 'As reservas cadastradas já passaram.'; if (rl) rl.href = '#reservations'; }
+    if (now >= START && now <= END) {
+      const dayNum = Math.floor((now - START) / 86400000) + 1;
+      wrap.classList.add('traveling');
+      num.textContent  = 'Dia ' + dayNum;
+      lbl.innerHTML    = 'de 15<br/>Você está em Orlando!';
+    } else if (now < START) {
+      const diff = Math.ceil((START - now) / 86400000);
+      num.textContent = diff;
+      lbl.innerHTML   = diff === 1 ? 'dia para<br/>a viagem' : 'dias para<br/>a viagem';
+    } else {
+      wrap.style.display = 'none';
+    }
   })();
 
-  // ── TODAY HIGHLIGHT NA SIDEBAR ───────────────────────────────
-  (function() {
-    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  // ── PONTO 1: hoje / próximo compromisso — lê do DOM ─────────
+  // Os dados vivem nos elementos HTML via data-* — zero duplicação.
+  (function initStatusPanel() {
+    const todayKey = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const now      = new Date();
+
+    // Dias: lê dos <section class="day-block" data-date data-title data-detail>
+    const daySections = Array.from(document.querySelectorAll('.day-block[data-date]'));
+    const today       = daySections.find(function(s) { return s.dataset.date === todayKey; });
+    const upcoming    = daySections.find(function(s) { return s.dataset.date >= todayKey; })
+                        || daySections[daySections.length - 1];
+    const selected    = today || upcoming;
+
+    var titleEl  = document.getElementById('today-title');
+    var detailEl = document.getElementById('today-detail');
+    var linkEl   = document.getElementById('today-link');
+    if (selected) {
+      if (titleEl)  titleEl.textContent  = (today ? 'Hoje: ' : 'Próximo dia planejado: ') + selected.dataset.title;
+      if (detailEl) detailEl.textContent = selected.dataset.detail;
+      if (linkEl)   linkEl.href          = '#' + selected.id;
+    }
+
+    // Reservas: lê dos <a class="reservation-tile" data-at data-title data-detail>
+    const resTiles = Array.from(document.querySelectorAll('.reservation-tile[data-at]'));
+    const nextRes  = resTiles.find(function(el) { return new Date(el.dataset.at) >= now; });
+
+    var rt = document.getElementById('next-reservation-title');
+    var rd = document.getElementById('next-reservation-detail');
+    var rl = document.getElementById('next-reservation-link');
+    if (nextRes) {
+      if (rt) rt.textContent = nextRes.dataset.title;
+      if (rd) rd.textContent = nextRes.dataset.detail;
+      if (rl) rl.href        = nextRes.getAttribute('href');
+    } else {
+      if (rt) rt.textContent = 'Sem próximas reservas';
+      if (rd) rd.textContent = 'As reservas cadastradas já passaram.';
+      if (rl) rl.href        = '#reservations';
+    }
+  })();
+
+  // ── Sidebar: highlight do dia atual ─────────────────────────
+  (function initSidebarToday() {
+    const today = new Date().toISOString().slice(0, 10);
     document.querySelectorAll('.sidebar-nav a[data-date]').forEach(function(a) {
       if (a.dataset.date === today) {
         a.classList.add('is-today');
-        const pill = document.createElement('span');
-        pill.className = 'today-pill';
+        var pill = document.createElement('span');
+        pill.className   = 'today-pill';
         pill.textContent = 'hoje';
         a.insertBefore(pill, a.querySelector('.nav-date'));
       }
