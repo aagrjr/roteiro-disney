@@ -502,9 +502,30 @@
 
   /* ── FLIGHTS SECTION ─────────────────────── */
   .flights-section { margin: -12px 0 38px; }
-  .flights-section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .flights-collapsible {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .flights-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    font-family: -apple-system, sans-serif;
+  }
+  .flights-summary::-webkit-details-marker { display: none; }
+  .flights-summary-title { display: flex; flex-direction: column; gap: 2px; }
   .flights-section-title { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
   .flights-section-subtitle { font-family: -apple-system, sans-serif; color: var(--muted); font-size: 12px; }
+  .flights-collapsible .summary-chevron { flex-shrink: 0; }
+  .flights-collapsible[open] .summary-chevron { transform: rotate(180deg); }
+  .flights-collapsible .flights-grid { padding: 0 18px 18px; }
   .flights-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .flight-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; font-family: -apple-system, sans-serif; }
   .flight-card.departure { border-color: rgba(96,165,250,.25); background: rgba(96,165,250,.06); }
@@ -711,6 +732,7 @@
 <a href="#day-02"><span class="res-name">Oga's Cantina</span><span class="res-info">07/05 · 15h15</span></a>
 <a href="#day-04"><span class="res-name">Morimoto</span><span class="res-info">09/05 · 21h</span></a>
 <a href="#day-05"><span class="res-name">Teppan Edo</span><span class="res-info">10/05 · 15h</span></a>
+<a href="#day-06"><span class="res-name">Jaleo Dinner</span><span class="res-info">11/05 · 19h45</span></a>
 <a href="#day-07"><span class="res-name">Bigfire</span><span class="res-info">12/05 · 19h</span></a>
 <a href="#day-08"><span class="res-name">Mythos</span><span class="res-info">13/05 · 15h</span></a>
 <a href="#day-14"><span class="res-name">Café com Pilar</span><span class="res-info">19/05 · 13h30</span></a>
@@ -725,7 +747,7 @@
   <summary>
     <span class="summary-title">
       <strong>Resumo da viagem</strong>
-      <span>15 dias · 4 Disney · 4 Universal · 3 compras · 4 passeios · 7 reservas</span>
+      <span>15 dias · 4 Disney · 4 Universal · 3 compras · 4 passeios · 8 reservas</span>
     </span>
     <span class="summary-chevron">▾</span>
   </summary>
@@ -735,7 +757,7 @@
     <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Universal</span></div>
     <div class="sum-card"><span class="sum-number">3</span><span class="sum-label">Compras</span></div>
     <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Passeios</span></div>
-    <div class="sum-card"><span class="sum-number">7</span><span class="sum-label">Reservas</span></div>
+    <div class="sum-card"><span class="sum-number">8</span><span class="sum-label">Reservas</span></div>
   </div>
 </details>
 <!-- STATUS / HOJE -->
@@ -764,6 +786,7 @@
 <a class="reservation-tile" href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios</span></a>
 <a class="reservation-tile" href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs</span></a>
 <a class="reservation-tile" href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT</span></a>
+<a class="reservation-tile" href="#day-06" data-at="2026-05-11T19:45:00" data-title="Jaleo Dinner" data-detail="11/05 · 19h45 · Disney Springs"><span class="reservation-tile-name">Jaleo Dinner</span><span class="reservation-tile-info">11/05 · 19h45 · Disney Springs · 2 pessoas</span></a>
 <a class="reservation-tile" href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
 <a class="reservation-tile" href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
 <a class="reservation-tile" href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
@@ -771,10 +794,14 @@
 </section>
 <!-- VOOS -->
 <section aria-label="Voos da viagem" class="flights-section" id="flights">
-  <div class="flights-section-header">
-    <h2 class="flights-section-title">Voos</h2>
-    <span class="flights-section-subtitle">LATAM</span>
-  </div>
+  <details class="flights-collapsible">
+    <summary class="flights-summary">
+      <span class="flights-summary-title">
+        <span class="flights-section-title">Voos e chegada</span>
+        <span class="flights-section-subtitle">LATAM · ida/volta · sugestões rápidas para a chegada</span>
+      </span>
+      <span class="summary-chevron">▾</span>
+    </summary>
   <div class="flights-grid">
     <div class="flight-card departure">
       <div class="flight-card-label">Ida · Terça, 05/05</div>
@@ -814,6 +841,7 @@
       </div>
     </div>
   </div>
+  </details>
 </section>
 
 <!-- COMPRAS DESEJADAS -->
@@ -1200,7 +1228,7 @@
 <div class="day-content">
 <div class="info-card priority-card span2">
 <div class="card-label">Prioridade</div>
-<div class="card-value">Fazer Disney Springs sem correria: passeio leve, doces famosos e jantar de acordo com a energia do dia.</div>
+<div class="card-value">Fazer Disney Springs sem correria: passeio leve, doces famosos e reserva confirmada no Jaleo às 19h45.</div>
 </div>
 <div class="info-card logistics-card span2">
 <div class="card-label">Plano do dia</div>
@@ -1208,8 +1236,16 @@
 <div class="mini-timeline">
 <div class="tl-row"><span class="tl-time">Manhã</span><span class="tl-text">Começar mais devagar no hotel, recuperar energia dos parques e sair sem pressa.</span></div>
 <div class="tl-row"><span class="tl-time">Tarde</span><span class="tl-text">Passear por Disney Springs, lojas e paradas de doce. Prioridade para <a href="https://disneyworld.disney.go.com/dining/disney-springs/gideons-bakehouse/" rel="noopener noreferrer" target="_blank">Gideon's Bakehouse</a>; se quiser algo mais simples, considerar <a href="https://disneyworld.disney.go.com/dining/disney-springs/everglazed-donuts-and-cold-brew/" rel="noopener noreferrer" target="_blank">Everglazed Donuts &amp; Cold Brew</a> ou <a href="https://disneyworld.disney.go.com/shops/disney-springs/ghirardelli-ice-cream-and-chocolate-shop/" rel="noopener noreferrer" target="_blank">Ghirardelli</a>.</span></div>
-<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Escolher o jantar pelo clima: <a href="https://disneyworld.disney.go.com/dining/disney-springs/wine-bar-george/" rel="noopener noreferrer" target="_blank">Wine Bar George</a> para algo mais tranquilo, <a href="https://disneyworld.disney.go.com/dining/disney-springs/polite-pig/" rel="noopener noreferrer" target="_blank">The Polite Pig</a> para casual sem jantar longo, ou <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> para jantar especial.</span></div>
+<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Reserva confirmada no <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> às <strong>19h45</strong>. Chegar com folga em Disney Springs / West Side.</span></div>
 </div>
+</div>
+</div>
+<div class="info-card reservation-card span2">
+<div class="card-label">Reserva confirmada</div>
+<div class="card-value">
+<div class="res-restaurant-name"><a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo Dinner</a></div>
+<span class="res-time-pill">19h45</span>
+<div class="early-note">Disney Springs · West Side · 2 pessoas · Confirmação 356117150703.</div>
 </div>
 </div>
 <details class="info-card suggestion-card span2" open="">
@@ -1218,9 +1254,9 @@
 <span class="toggle-icon">▾</span>
 </summary>
 <div class="suggestion-body card-value">
-<strong>Jantar tranquilo:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/wine-bar-george/" rel="noopener noreferrer" target="_blank">Wine Bar George</a> — melhor opção para uma noite mais tranquila.<br/>
-<strong>Jantar casual:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/polite-pig/" rel="noopener noreferrer" target="_blank">The Polite Pig</a> — boa escolha se vocês quiserem algo casual, sem jantar longo.<br/>
-<strong>Jantar especial:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> by José Andrés — tapas espanholas, paella e sangria; fica no West Side de Disney Springs.<br/><br/>
+<strong>Reserva principal:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" rel="noopener noreferrer" target="_blank">Jaleo</a> by José Andrés — jantar confirmado às 19h45 no West Side de Disney Springs.<br/>
+<strong>Alternativa tranquila:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/wine-bar-george/" rel="noopener noreferrer" target="_blank">Wine Bar George</a> — manter como opção se quiserem uma noite mais tranquila em outra visita.<br/>
+<strong>Alternativa casual:</strong> <a href="https://disneyworld.disney.go.com/dining/disney-springs/polite-pig/" rel="noopener noreferrer" target="_blank">The Polite Pig</a> — manter como opção casual, sem jantar longo.<br/><br/>
 <strong>Doces:</strong><br/>
             1. <a href="https://disneyworld.disney.go.com/dining/disney-springs/gideons-bakehouse/" rel="noopener noreferrer" target="_blank">Gideon's Bakehouse</a> — provavelmente o doce mais famoso de Disney Springs; cookies enormes e muita popularidade, então pode ter fila.<br/>
             2. <a href="https://disneyworld.disney.go.com/dining/disney-springs/everglazed-donuts-and-cold-brew/" rel="noopener noreferrer" target="_blank">Everglazed Donuts &amp; Cold Brew</a> — melhor pedida se vocês gostam de donut doce e querem algo bem característico.<br/>
