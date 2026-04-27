@@ -523,6 +523,20 @@
   .flight-note { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.45; }
 
 
+  /* ── SHOPPING WISHLIST ───────────────────── */
+  .wishlist-section { margin: -18px 0 38px; }
+  .wishlist-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; font-family: -apple-system, sans-serif; }
+  .wishlist-card.suggestion-card { border-color: rgba(251,191,36,.28); background: rgba(251,191,36,.045); }
+  .wishlist-intro { color: var(--muted); font-size: 12px; line-height: 1.45; margin-bottom: 12px; }
+  .wishlist-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .wishlist-item { border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 13px 14px; background: rgba(0,0,0,.14); }
+  .wishlist-item-title { display: block; font-size: 14px; font-weight: 900; line-height: 1.3; color: var(--text); margin-bottom: 8px; }
+  .wishlist-meta { display: grid; gap: 5px; color: var(--muted); font-size: 12px; line-height: 1.45; margin-bottom: 10px; }
+  .wishlist-price { color: #f8fafc; font-weight: 900; }
+  .wishlist-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .wishlist-date { color: var(--muted); font-size: 11px; }
+
+
   /* ── DESKTOP-ONLY PLANNING PANEL ─────────── */
   .desktop-only { display: block; }
   .desktop-extra-section { margin: 0 0 42px; }
@@ -797,6 +811,48 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- COMPRAS DESEJADAS -->
+<section aria-label="Compras desejadas" class="wishlist-section" id="wishlist">
+  <details class="wishlist-card suggestion-card">
+    <summary class="suggestion-toggle">
+      <span class="card-label" style="margin:0">Compras desejadas</span>
+    </summary>
+    <div class="suggestion-body card-value">
+      <p class="wishlist-intro">Itens para acompanhar preço e considerar compra online antes/durante a viagem.</p>
+      <div class="wishlist-grid">
+        <div class="wishlist-item">
+          <strong class="wishlist-item-title">
+            <a href="https://districtoneny.com/products/dm7866-200-jordan-1-retro-low-og-sp-travis-scott-medium-olive?variant=45597145956507" target="_blank" rel="noopener noreferrer">Jordan 1 Retro Low OG SP Travis Scott Medium Olive</a>
+          </strong>
+          <div class="wishlist-meta">
+            <span>SKU: <strong>DM7866-200</strong></span>
+            <span>Numeração desejada: <strong>10 M</strong></span>
+            <span>Valor atual: <span class="wishlist-price">US$ 700,00</span> <span class="wishlist-date">(consultado em 27/04)</span></span>
+            <span>Status: <span class="status-badge st-optional">Compra online</span></span>
+          </div>
+          <div class="wishlist-actions">
+            <a class="action-link" href="https://districtoneny.com/products/dm7866-200-jordan-1-retro-low-og-sp-travis-scott-medium-olive?variant=45597145956507" target="_blank" rel="noopener noreferrer">Abrir produto</a>
+          </div>
+        </div>
+        <div class="wishlist-item">
+          <strong class="wishlist-item-title">
+            <a href="https://districtoneny.com/products/dm7866-104-jordan-1-retro-low-og-sp-fragment-x-travis-scott-sail-military-blue?variant=47193376817307" target="_blank" rel="noopener noreferrer">Jordan 1 Retro Low OG SP Fragment x Travis Scott Sail / Military Blue</a>
+          </strong>
+          <div class="wishlist-meta">
+            <span>SKU: <strong>DM7866-104</strong></span>
+            <span>Numeração desejada: <strong>10 M</strong></span>
+            <span>Valor atual: <span class="wishlist-price">US$ 750,00</span> <span class="wishlist-date">(consultado em 27/04)</span></span>
+            <span>Status: <span class="status-badge st-optional">Compra online</span></span>
+          </div>
+          <div class="wishlist-actions">
+            <a class="action-link" href="https://districtoneny.com/products/dm7866-104-jordan-1-retro-low-og-sp-fragment-x-travis-scott-sail-military-blue?variant=47193376817307" target="_blank" rel="noopener noreferrer">Abrir produto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 <!-- PAINEL EXTRA DESKTOP -->
 <section aria-label="Informações extras para planejamento no desktop" class="desktop-extra-section desktop-only">
