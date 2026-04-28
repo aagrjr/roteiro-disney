@@ -689,6 +689,7 @@
 <nav aria-label="Navegação por dias da viagem" class="mobile-day-nav">
 <div class="mobile-day-nav-inner">
 <a class="mobile-day-link other" href="#reservations"><span class="mobile-day-date">★</span><span class="mobile-day-name">Planos</span></a>
+<a class="mobile-day-link shopping" href="#wishlist"><span class="mobile-day-date">🛍️</span><span class="mobile-day-name">Compras</span></a>
 <a class="mobile-day-link disney" href="#day-01"><span class="mobile-day-date">06/05</span><span class="mobile-day-name">MK</span></a>
 <a class="mobile-day-link disney" href="#day-02"><span class="mobile-day-date">07/05</span><span class="mobile-day-name">HS</span></a>
 <a class="mobile-day-link disney" href="#day-03"><span class="mobile-day-date">08/05</span><span class="mobile-day-name">AK</span></a>
@@ -1730,9 +1731,11 @@
       document.querySelectorAll('.day-block').forEach(function(el) {
         el.style.scrollMarginTop = margin + 'px';
       });
-      // A seção de reservas também precisa de margem
-      const reservations = document.getElementById('reservations');
-      if (reservations) reservations.style.scrollMarginTop = margin + 'px';
+      // As seções de atalho também precisam de margem
+      ['reservations', 'wishlist'].forEach(function(id) {
+        const section = document.getElementById(id);
+        if (section) section.style.scrollMarginTop = margin + 'px';
+      });
     }
     update();
     window.addEventListener('resize', update);
