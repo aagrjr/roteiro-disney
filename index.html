@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -499,6 +500,11 @@
   .reservation-tile-name { display: block; font-weight: 800; font-size: 14px; }
   .reservation-tile-info { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
 
+  .plans-collapsible { margin-bottom: 0; }
+  .plans-collapsible .reservation-grid { padding: 0 18px 18px; }
+  .reservation-tile.plan-attraction { border-color: rgba(52,211,153,.22); background: rgba(52,211,153,.05); }
+  .reservation-tile.plan-dining { border-color: rgba(96,165,250,.22); background: rgba(96,165,250,.055); }
+
 
   /* ── FLIGHTS SECTION ─────────────────────── */
   .flights-section { margin: -12px 0 38px; }
@@ -676,7 +682,7 @@
 <!-- MOBILE DAY NAV -->
 <nav aria-label="Navegação por dias da viagem" class="mobile-day-nav">
 <div class="mobile-day-nav-inner">
-<a class="mobile-day-link other" href="#reservations"><span class="mobile-day-date">★</span><span class="mobile-day-name">Reservas</span></a>
+<a class="mobile-day-link other" href="#reservations"><span class="mobile-day-date">★</span><span class="mobile-day-name">Planos</span></a>
 <a class="mobile-day-link disney" href="#day-01"><span class="mobile-day-date">06/05</span><span class="mobile-day-name">MK</span></a>
 <a class="mobile-day-link disney" href="#day-02"><span class="mobile-day-date">07/05</span><span class="mobile-day-name">HS</span></a>
 <a class="mobile-day-link disney" href="#day-03"><span class="mobile-day-date">08/05</span><span class="mobile-day-name">AK</span></a>
@@ -747,7 +753,7 @@
   <summary>
     <span class="summary-title">
       <strong>Resumo da viagem</strong>
-      <span>15 dias · 4 Disney · 4 Universal · 3 compras · 4 passeios · 8 reservas</span>
+      <span>15 dias · 4 Disney · 4 Universal · 3 compras · 4 passeios · 24 planos confirmados</span>
     </span>
     <span class="summary-chevron">▾</span>
   </summary>
@@ -757,7 +763,7 @@
     <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Universal</span></div>
     <div class="sum-card"><span class="sum-number">3</span><span class="sum-label">Compras</span></div>
     <div class="sum-card"><span class="sum-number">4</span><span class="sum-label">Passeios</span></div>
-    <div class="sum-card"><span class="sum-number">8</span><span class="sum-label">Reservas</span></div>
+    <div class="sum-card"><span class="sum-number">24</span><span class="sum-label">Planos</span></div>
   </div>
 </details>
 <!-- STATUS / HOJE -->
@@ -772,25 +778,51 @@
 <div class="trip-status-label">Próximo compromisso</div>
 <div class="trip-status-title" id="next-reservation-title">Be Our Guest</div>
 <div class="trip-status-detail" id="next-reservation-detail">06/05 · 15h00 · Magic Kingdom</div>
-<div class="trip-status-actions"><a class="action-link" href="#day-01" id="next-reservation-link">Ver reserva</a></div>
+<div class="trip-status-actions"><a class="action-link" href="#day-01" id="next-reservation-link">Ver plano</a></div>
 </div>
 </section>
-<!-- RESERVAS CONFIRMADAS -->
-<section aria-label="Reservas confirmadas" class="reservation-section" id="reservations">
-<div class="reservation-section-header">
-<h2 class="reservation-section-title">Reservas confirmadas</h2>
-<span class="reservation-section-subtitle">Atalho útil no celular</span>
-</div>
-<div class="reservation-grid">
-<a class="reservation-tile" href="#day-01" data-at="2026-05-06T15:00:00" data-title="Be Our Guest" data-detail="06/05 · 15h00 · Magic Kingdom"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom</span></a>
-<a class="reservation-tile" href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios</span></a>
-<a class="reservation-tile" href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs</span></a>
-<a class="reservation-tile" href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT</span></a>
-<a class="reservation-tile" href="#day-06" data-at="2026-05-11T19:45:00" data-title="Jaleo Dinner" data-detail="11/05 · 19h45 · Disney Springs"><span class="reservation-tile-name">Jaleo Dinner</span><span class="reservation-tile-info">11/05 · 19h45 · Disney Springs</span></a>
-<a class="reservation-tile" href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk</span></a>
-<a class="reservation-tile" href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure</span></a>
-<a class="reservation-tile" href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
-</div>
+<!-- PLANOS CONFIRMADOS -->
+<section aria-label="Planos confirmados" class="reservation-section" id="reservations">
+  <details class="summary-collapsible plans-collapsible">
+    <summary>
+      <span class="summary-title">
+        <strong>Planos confirmados</strong>
+        <span>Restaurantes e Lightning Lane organizados por dia</span>
+      </span>
+      <span class="summary-chevron">▾</span>
+    </summary>
+    <div class="reservation-grid">
+      <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T10:50:00" data-title="TRON Lightcycle / Run" data-detail="06/05 · 10h50–11h50 · Magic Kingdom"><span class="reservation-tile-name">TRON Lightcycle / Run</span><span class="reservation-tile-info">06/05 · 10h50–11h50 · Magic Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T11:40:00" data-title="Space Mountain" data-detail="06/05 · 11h40–12h40 · Magic Kingdom"><span class="reservation-tile-name">Space Mountain</span><span class="reservation-tile-info">06/05 · 11h40–12h40 · Magic Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T12:40:00" data-title="Pirates of the Caribbean" data-detail="06/05 · 12h40–13h40 · Magic Kingdom"><span class="reservation-tile-name">Pirates of the Caribbean</span><span class="reservation-tile-info">06/05 · 12h40–13h40 · Magic Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T13:40:00" data-title="Haunted Mansion" data-detail="06/05 · 13h40–14h40 · Magic Kingdom"><span class="reservation-tile-name">Haunted Mansion</span><span class="reservation-tile-info">06/05 · 13h40–14h40 · Magic Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-dining" href="#day-01" data-at="2026-05-06T15:00:00" data-title="Be Our Guest" data-detail="06/05 · 15h00 · Magic Kingdom"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom · Restaurante</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T16:25:00" data-title="Seven Dwarfs Mine Train" data-detail="06/05 · 16h25–17h25 · Magic Kingdom"><span class="reservation-tile-name">Seven Dwarfs Mine Train</span><span class="reservation-tile-info">06/05 · 16h25–17h25 · Magic Kingdom · Lightning Lane</span></a>
+
+      <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T09:20:00" data-title="Millennium Falcon: Smugglers Run" data-detail="07/05 · 9h20–10h20 · Hollywood Studios"><span class="reservation-tile-name">Millennium Falcon: Smugglers Run</span><span class="reservation-tile-info">07/05 · 9h20–10h20 · Hollywood Studios · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T12:10:00" data-title="Tower of Terror" data-detail="07/05 · 12h10–13h10 · Hollywood Studios"><span class="reservation-tile-name">Tower of Terror</span><span class="reservation-tile-info">07/05 · 12h10–13h10 · Hollywood Studios · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T14:00:00" data-title="Rise of the Resistance" data-detail="07/05 · 14h00–15h00 · Hollywood Studios"><span class="reservation-tile-name">Star Wars: Rise of the Resistance</span><span class="reservation-tile-info">07/05 · 14h00–15h00 · Hollywood Studios · Lightning Lane</span></a>
+      <a class="reservation-tile plan-dining" href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios · Restaurante</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T15:40:00" data-title="Toy Story Mania!" data-detail="07/05 · 15h40–16h40 · Hollywood Studios"><span class="reservation-tile-name">Toy Story Mania!</span><span class="reservation-tile-info">07/05 · 15h40–16h40 · Hollywood Studios · Lightning Lane</span></a>
+
+      <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T08:10:00" data-title="Avatar Flight of Passage" data-detail="08/05 · 8h10–9h10 · Animal Kingdom"><span class="reservation-tile-name">Avatar Flight of Passage</span><span class="reservation-tile-info">08/05 · 8h10–9h10 · Animal Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T09:10:00" data-title="Kilimanjaro Safaris" data-detail="08/05 · 9h10–10h10 · Animal Kingdom"><span class="reservation-tile-name">Kilimanjaro Safaris</span><span class="reservation-tile-info">08/05 · 9h10–10h10 · Animal Kingdom · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T10:10:00" data-title="Expedition Everest" data-detail="08/05 · 10h10–11h10 · Animal Kingdom"><span class="reservation-tile-name">Expedition Everest</span><span class="reservation-tile-info">08/05 · 10h10–11h10 · Animal Kingdom · Lightning Lane</span></a>
+
+      <a class="reservation-tile plan-dining" href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs · Restaurante</span></a>
+
+      <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T09:00:00" data-title="Mission: SPACE" data-detail="10/05 · 9h00–10h00 · EPCOT"><span class="reservation-tile-name">Mission: SPACE</span><span class="reservation-tile-info">10/05 · 9h00–10h00 · EPCOT · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T10:00:00" data-title="Test Track" data-detail="10/05 · 10h00–11h00 · EPCOT"><span class="reservation-tile-name">Test Track</span><span class="reservation-tile-info">10/05 · 10h00–11h00 · EPCOT · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T11:00:00" data-title="Soarin' Around the World" data-detail="10/05 · 11h00–12h00 · EPCOT"><span class="reservation-tile-name">Soarin' Around the World</span><span class="reservation-tile-info">10/05 · 11h00–12h00 · EPCOT · Lightning Lane</span></a>
+      <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T12:00:00" data-title="Guardians of the Galaxy: Cosmic Rewind" data-detail="10/05 · 12h00–13h00 · EPCOT"><span class="reservation-tile-name">Guardians of the Galaxy: Cosmic Rewind</span><span class="reservation-tile-info">10/05 · 12h00–13h00 · EPCOT · Lightning Lane</span></a>
+      <a class="reservation-tile plan-dining" href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT · Restaurante</span></a>
+
+      <a class="reservation-tile plan-dining" href="#day-06" data-at="2026-05-11T19:45:00" data-title="Jaleo Dinner" data-detail="11/05 · 19h45 · Disney Springs"><span class="reservation-tile-name">Jaleo Dinner</span><span class="reservation-tile-info">11/05 · 19h45 · Disney Springs · Restaurante</span></a>
+      <a class="reservation-tile plan-dining" href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk · Restaurante</span></a>
+      <a class="reservation-tile plan-dining" href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure · Restaurante</span></a>
+      <a class="reservation-tile plan-dining" href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
+    </div>
+  </details>
 </section>
 <!-- VOOS -->
 <section aria-label="Voos da viagem" class="flights-section" id="flights">
@@ -1039,21 +1071,6 @@
 <div class="card-label">Prioridade</div>
 <div class="card-value">Chegar cedo, focar nas atrações principais e usar Be Our Guest como pausa longa do dia.</div>
 </div>
-<div class="info-card logistics-card span2">
-<div class="card-label">Lightning Lane / planos confirmados</div>
-<div class="card-value">
-<div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">10h50</span><span class="tl-text"><strong>TRON Lightcycle / Run</strong> — redeem entre 10h50 e 11h50.</span></div>
-<div class="tl-row"><span class="tl-time">11h40</span><span class="tl-text"><strong>Space Mountain</strong> — redeem entre 11h40 e 12h40.</span></div>
-<div class="tl-row"><span class="tl-time">12h40</span><span class="tl-text"><strong>Pirates of the Caribbean</strong> — redeem entre 12h40 e 13h40.</span></div>
-<div class="tl-row"><span class="tl-time">13h40</span><span class="tl-text"><strong>Haunted Mansion</strong> — redeem entre 13h40 e 14h40.</span></div>
-<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong>Be Our Guest</strong> — reserva de restaurante.</span></div>
-<div class="tl-row"><span class="tl-time">16h25</span><span class="tl-text"><strong>Seven Dwarfs Mine Train</strong> — redeem entre 16h25 e 17h25.</span></div>
-</div>
-<div class="early-note">Alguns horários aparecem com sobreposição no app; usar como sequência prática do My Disney Experience.</div>
-</div>
-</div>
-
 <div class="info-card reservation-card span2">
 <div class="card-label">Reserva confirmada</div>
 <div class="card-value">
@@ -1101,20 +1118,6 @@
 <div class="card-label">Prioridade</div>
 <div class="card-value">Priorizar Galaxy's Edge, Oga's Cantina e pelo menos um quick service temático.</div>
 </div>
-<div class="info-card logistics-card span2">
-<div class="card-label">Lightning Lane / planos confirmados</div>
-<div class="card-value">
-<div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">9h20</span><span class="tl-text"><strong>Millennium Falcon: Smugglers Run</strong> — redeem entre 9h20 e 10h20.</span></div>
-<div class="tl-row"><span class="tl-time">12h10</span><span class="tl-text"><strong>The Twilight Zone™ Tower of Terror</strong> — redeem entre 12h10 e 13h10.</span></div>
-<div class="tl-row"><span class="tl-time">14h00</span><span class="tl-text"><strong>Star Wars: Rise of the Resistance</strong> — redeem entre 14h e 15h.</span></div>
-<div class="tl-row"><span class="tl-time">15h15</span><span class="tl-text"><strong>Oga's Cantina</strong> — reserva de restaurante.</span></div>
-<div class="tl-row"><span class="tl-time">15h30</span><span class="tl-text"><strong>Toy Story Mania!</strong> — redeem entre 15h30 e 16h30.</span></div>
-</div>
-<div class="early-note">O app indica sobreposição entre Oga's Cantina e Toy Story Mania; manter Toy Story como janela logo após a reserva, se der tempo.</div>
-</div>
-</div>
-
 <div class="info-card reservation-card span2">
 <div class="card-label">Reserva confirmada</div>
 <div class="card-value">
@@ -1163,17 +1166,6 @@
 <div class="card-label">Prioridade</div>
 <div class="card-value">Priorizar Pandora cedo, encaixar Kilimanjaro Safaris ainda de manhã enquanto os animais tendem a estar mais ativos, almoçar no Satu'li Canteen e fazer a parada no Pongu Pongu.</div>
 </div>
-<div class="info-card logistics-card span2">
-<div class="card-label">Lightning Lane / planos confirmados</div>
-<div class="card-value">
-<div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">8h10</span><span class="tl-text"><strong>Avatar Flight of Passage</strong> — redeem entre 8h10 e 9h10.</span></div>
-<div class="tl-row"><span class="tl-time">9h10</span><span class="tl-text"><strong>Kilimanjaro Safaris</strong> — redeem entre 9h10 e 10h10.</span></div>
-<div class="tl-row"><span class="tl-time">10h10</span><span class="tl-text"><strong>Expedition Everest - Legend of the Forbidden Mountain</strong> — redeem entre 10h10 e 11h10.</span></div>
-</div>
-</div>
-</div>
-
 <div class="info-card logistics-card span2">
 <div class="card-label">Plano do dia</div>
 <div class="card-value">
@@ -1256,19 +1248,6 @@
 <div class="card-label">Prioridade</div>
 <div class="card-value">Focar em World Showcase e chegar com calma ao Teppan Edo às 15h.</div>
 </div>
-<div class="info-card logistics-card span2">
-<div class="card-label">Lightning Lane / planos confirmados</div>
-<div class="card-value">
-<div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">9h00</span><span class="tl-text"><strong>Mission: SPACE</strong> — redeem entre 9h e 10h.</span></div>
-<div class="tl-row"><span class="tl-time">10h00</span><span class="tl-text"><strong>Test Track</strong> — redeem entre 10h e 11h.</span></div>
-<div class="tl-row"><span class="tl-time">11h00</span><span class="tl-text"><strong>Soarin' Around the World</strong> — redeem entre 11h e 12h.</span></div>
-<div class="tl-row"><span class="tl-time">12h00</span><span class="tl-text"><strong>Guardians of the Galaxy: Cosmic Rewind</strong> — redeem entre 12h e 13h.</span></div>
-<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong>Teppan Edo</strong> — reserva de restaurante.</span></div>
-</div>
-</div>
-</div>
-
 <div class="info-card reservation-card span2">
 <div class="card-label">Reserva confirmada</div>
 <div class="card-value">
