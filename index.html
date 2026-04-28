@@ -496,6 +496,8 @@
   .reservation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
   .reservation-tile { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: var(--text); font-family: -apple-system, sans-serif; }
   .reservation-tile:hover { border-color: #4a5568; }
+  .reservation-tile a { color: #60a5fa; text-decoration: none; font-weight: 800; }
+  .reservation-tile a:hover { text-decoration: underline; }
   .reservation-tile-name { display: block; font-weight: 800; font-size: 14px; }
   .reservation-tile-info { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
 
@@ -800,13 +802,13 @@
       <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T11:40:00" data-title="Space Mountain" data-detail="06/05 · 11h40–12h40 · Magic Kingdom"><span class="reservation-tile-name">Space Mountain</span><span class="reservation-tile-info">06/05 · 11h40–12h40 · Magic Kingdom · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T12:40:00" data-title="Pirates of the Caribbean" data-detail="06/05 · 12h40–13h40 · Magic Kingdom"><span class="reservation-tile-name">Pirates of the Caribbean</span><span class="reservation-tile-info">06/05 · 12h40–13h40 · Magic Kingdom · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T13:40:00" data-title="Haunted Mansion" data-detail="06/05 · 13h40–14h40 · Magic Kingdom"><span class="reservation-tile-name">Haunted Mansion</span><span class="reservation-tile-info">06/05 · 13h40–14h40 · Magic Kingdom · Lightning Lane</span></a>
-      <a class="reservation-tile plan-dining" href="#day-01" data-at="2026-05-06T15:00:00" data-title="Be Our Guest" data-detail="06/05 · 15h00 · Magic Kingdom"><span class="reservation-tile-name">Be Our Guest</span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom · Restaurante</span></a>
+      <div class="reservation-tile plan-dining" data-day-href="#day-01" data-at="2026-05-06T15:00:00" data-title="Be Our Guest" data-detail="06/05 · 15h00 · Magic Kingdom"><span class="reservation-tile-name"><a href="https://disneyworld.disney.go.com/pt-br/dining/magic-kingdom/be-our-guest-restaurant/" target="_blank" rel="noopener noreferrer">Be Our Guest</a></span><span class="reservation-tile-info">06/05 · 15h00 · Magic Kingdom · Restaurante · <a href="#day-01">Ver dia</a></span></div>
       <a class="reservation-tile plan-attraction" href="#day-01" data-at="2026-05-06T16:25:00" data-title="Seven Dwarfs Mine Train" data-detail="06/05 · 16h25–17h25 · Magic Kingdom"><span class="reservation-tile-name">Seven Dwarfs Mine Train</span><span class="reservation-tile-info">06/05 · 16h25–17h25 · Magic Kingdom · Lightning Lane</span></a>
 
       <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T09:20:00" data-title="Millennium Falcon: Smugglers Run" data-detail="07/05 · 9h20–10h20 · Hollywood Studios"><span class="reservation-tile-name">Millennium Falcon: Smugglers Run</span><span class="reservation-tile-info">07/05 · 9h20–10h20 · Hollywood Studios · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T12:10:00" data-title="Tower of Terror" data-detail="07/05 · 12h10–13h10 · Hollywood Studios"><span class="reservation-tile-name">Tower of Terror</span><span class="reservation-tile-info">07/05 · 12h10–13h10 · Hollywood Studios · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T14:00:00" data-title="Rise of the Resistance" data-detail="07/05 · 14h00–15h00 · Hollywood Studios"><span class="reservation-tile-name">Star Wars: Rise of the Resistance</span><span class="reservation-tile-info">07/05 · 14h00–15h00 · Hollywood Studios · Lightning Lane</span></a>
-      <a class="reservation-tile plan-dining" href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name">Oga's Cantina</span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios · Restaurante</span></a>
+      <div class="reservation-tile plan-dining" data-day-href="#day-02" data-at="2026-05-07T15:15:00" data-title="Oga's Cantina" data-detail="07/05 · 15h15 · Hollywood Studios"><span class="reservation-tile-name"><a href="https://disneyworld.disney.go.com/dining/hollywood-studios/ogas-cantina/" target="_blank" rel="noopener noreferrer">Oga's Cantina</a></span><span class="reservation-tile-info">07/05 · 15h15 · Hollywood Studios · Restaurante · <a href="#day-02">Ver dia</a></span></div>
       <a class="reservation-tile plan-attraction" href="#day-02" data-at="2026-05-07T15:40:00" data-title="Toy Story Mania!" data-detail="07/05 · 15h40–16h40 · Hollywood Studios"><span class="reservation-tile-name">Toy Story Mania!</span><span class="reservation-tile-info">07/05 · 15h40–16h40 · Hollywood Studios · Lightning Lane</span></a>
 
       <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T08:10:00" data-title="Avatar Flight of Passage" data-detail="08/05 · 8h10–9h10 · Animal Kingdom"><span class="reservation-tile-name">Avatar Flight of Passage</span><span class="reservation-tile-info">08/05 · 8h10–9h10 · Animal Kingdom · Lightning Lane</span></a>
@@ -814,18 +816,18 @@
       <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T10:10:00" data-title="Expedition Everest" data-detail="08/05 · 10h10–11h10 · Animal Kingdom"><span class="reservation-tile-name">Expedition Everest</span><span class="reservation-tile-info">08/05 · 10h10–11h10 · Animal Kingdom · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-03" data-at="2026-05-08T11:10:00" data-title="Na'vi River Journey" data-detail="08/05 · 11h10–12h10 · Animal Kingdom"><span class="reservation-tile-name">Na'vi River Journey</span><span class="reservation-tile-info">08/05 · 11h10–12h10 · Animal Kingdom · Lightning Lane</span></a>
 
-      <a class="reservation-tile plan-dining" href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name">Morimoto</span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs · Restaurante</span></a>
+      <div class="reservation-tile plan-dining" data-day-href="#day-04" data-at="2026-05-09T21:00:00" data-title="Morimoto" data-detail="09/05 · 21h00 · Disney Springs"><span class="reservation-tile-name"><a href="https://disneyworld.disney.go.com/dining/disney-springs/morimoto-asia/" target="_blank" rel="noopener noreferrer">Morimoto</a></span><span class="reservation-tile-info">09/05 · 21h00 · Disney Springs · Restaurante · <a href="#day-04">Ver dia</a></span></div>
 
       <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T09:00:00" data-title="Mission: SPACE" data-detail="10/05 · 9h00–10h00 · EPCOT"><span class="reservation-tile-name">Mission: SPACE</span><span class="reservation-tile-info">10/05 · 9h00–10h00 · EPCOT · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T10:00:00" data-title="Test Track" data-detail="10/05 · 10h00–11h00 · EPCOT"><span class="reservation-tile-name">Test Track</span><span class="reservation-tile-info">10/05 · 10h00–11h00 · EPCOT · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T11:00:00" data-title="Soarin' Around the World" data-detail="10/05 · 11h00–12h00 · EPCOT"><span class="reservation-tile-name">Soarin' Around the World</span><span class="reservation-tile-info">10/05 · 11h00–12h00 · EPCOT · Lightning Lane</span></a>
       <a class="reservation-tile plan-attraction" href="#day-05" data-at="2026-05-10T12:00:00" data-title="Guardians of the Galaxy: Cosmic Rewind" data-detail="10/05 · 12h00–13h00 · EPCOT"><span class="reservation-tile-name">Guardians of the Galaxy: Cosmic Rewind</span><span class="reservation-tile-info">10/05 · 12h00–13h00 · EPCOT · Lightning Lane</span></a>
-      <a class="reservation-tile plan-dining" href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name">Teppan Edo</span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT · Restaurante</span></a>
+      <div class="reservation-tile plan-dining" data-day-href="#day-05" data-at="2026-05-10T15:00:00" data-title="Teppan Edo" data-detail="10/05 · 15h00 · EPCOT"><span class="reservation-tile-name"><a href="https://disneyworld.disney.go.com/pt-br/dining/epcot/teppan-edo/" target="_blank" rel="noopener noreferrer">Teppan Edo</a></span><span class="reservation-tile-info">10/05 · 15h00 · EPCOT · Restaurante · <a href="#day-05">Ver dia</a></span></div>
 
-      <a class="reservation-tile plan-dining" href="#day-06" data-at="2026-05-11T19:45:00" data-title="Jaleo Dinner" data-detail="11/05 · 19h45 · Disney Springs"><span class="reservation-tile-name">Jaleo Dinner</span><span class="reservation-tile-info">11/05 · 19h45 · Disney Springs · Restaurante</span></a>
-      <a class="reservation-tile plan-dining" href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name">Bigfire</span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk · Restaurante</span></a>
-      <a class="reservation-tile plan-dining" href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name">Mythos</span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure · Restaurante</span></a>
-      <a class="reservation-tile plan-dining" href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee</span></a>
+      <div class="reservation-tile plan-dining" data-day-href="#day-06" data-at="2026-05-11T19:45:00" data-title="Jaleo Dinner" data-detail="11/05 · 19h45 · Disney Springs"><span class="reservation-tile-name"><a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" target="_blank" rel="noopener noreferrer">Jaleo Dinner</a></span><span class="reservation-tile-info">11/05 · 19h45 · Disney Springs · Restaurante · <a href="#day-06">Ver dia</a></span></div>
+      <div class="reservation-tile plan-dining" data-day-href="#day-07" data-at="2026-05-12T19:00:00" data-title="Bigfire" data-detail="12/05 · 19h00 · CityWalk"><span class="reservation-tile-name"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/bigfire" target="_blank" rel="noopener noreferrer">Bigfire</a></span><span class="reservation-tile-info">12/05 · 19h00 · CityWalk · Restaurante · <a href="#day-07">Ver dia</a></span></div>
+      <div class="reservation-tile plan-dining" data-day-href="#day-08" data-at="2026-05-13T15:00:00" data-title="Mythos" data-detail="13/05 · 15h00 · Islands of Adventure"><span class="reservation-tile-name"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/mythos-restaurant" target="_blank" rel="noopener noreferrer">Mythos</a></span><span class="reservation-tile-info">13/05 · 15h00 · Islands of Adventure · Restaurante · <a href="#day-08">Ver dia</a></span></div>
+      <div class="reservation-tile plan-dining" data-day-href="#day-14" data-at="2026-05-19T13:30:00" data-title="Café com Pilar" data-detail="19/05 · 13h30 · Kissimmee"><span class="reservation-tile-name">Café com Pilar</span><span class="reservation-tile-info">19/05 · 13h30 · Kissimmee · <a href="#day-14">Ver dia</a></span></div>
     </div>
   </details>
 </section>
@@ -1076,7 +1078,7 @@
 <div class="tl-row"><span class="tl-time">11h40</span><span class="tl-text"><strong>Space Mountain</strong> — 11h40–12h40 · Magic Kingdom · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">12h40</span><span class="tl-text"><strong>Pirates of the Caribbean</strong> — 12h40–13h40 · Magic Kingdom · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">13h40</span><span class="tl-text"><strong>Haunted Mansion</strong> — 13h40–14h40 · Magic Kingdom · Lightning Lane</span></div>
-<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong>Be Our Guest</strong> — 15h00 · Magic Kingdom · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/pt-br/dining/magic-kingdom/be-our-guest-restaurant/" target="_blank" rel="noopener noreferrer">Be Our Guest</a></strong> — 15h00 · Magic Kingdom · Restaurante</span></div>
 <div class="tl-row"><span class="tl-time">16h25</span><span class="tl-text"><strong>Seven Dwarfs Mine Train</strong> — 16h25–17h25 · Magic Kingdom · Lightning Lane</span></div>
 </div>
 </div>
@@ -1128,7 +1130,7 @@
 <div class="tl-row"><span class="tl-time">9h20</span><span class="tl-text"><strong>Millennium Falcon: Smugglers Run</strong> — 9h20–10h20 · Hollywood Studios · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">12h10</span><span class="tl-text"><strong>Tower of Terror</strong> — 12h10–13h10 · Hollywood Studios · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">14h00</span><span class="tl-text"><strong>Rise of the Resistance</strong> — 14h00–15h00 · Hollywood Studios · Lightning Lane</span></div>
-<div class="tl-row"><span class="tl-time">15h15</span><span class="tl-text"><strong>Oga's Cantina</strong> — 15h15 · Hollywood Studios · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">15h15</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/dining/hollywood-studios/ogas-cantina/" target="_blank" rel="noopener noreferrer">Oga's Cantina</a></strong> — 15h15 · Hollywood Studios · Restaurante</span></div>
 <div class="tl-row"><span class="tl-time">15h40</span><span class="tl-text"><strong>Toy Story Mania!</strong> — 15h40–16h40 · Hollywood Studios · Lightning Lane</span></div>
 </div>
 </div>
@@ -1230,7 +1232,7 @@
 <div class="card-label">Planos confirmados do dia</div>
 <div class="card-value">
 <div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">21h00</span><span class="tl-text"><strong>Morimoto</strong> — 21h00 · Disney Springs · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">21h00</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/dining/disney-springs/morimoto-asia/" target="_blank" rel="noopener noreferrer">Morimoto</a></strong> — 21h00 · Disney Springs · Restaurante</span></div>
 </div>
 </div>
 </div>
@@ -1276,7 +1278,7 @@
 <div class="tl-row"><span class="tl-time">10h00</span><span class="tl-text"><strong>Test Track</strong> — 10h00–11h00 · EPCOT · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">11h00</span><span class="tl-text"><strong>Soarin' Around the World</strong> — 11h00–12h00 · EPCOT · Lightning Lane</span></div>
 <div class="tl-row"><span class="tl-time">12h00</span><span class="tl-text"><strong>Guardians of the Galaxy: Cosmic Rewind</strong> — 12h00–13h00 · EPCOT · Lightning Lane</span></div>
-<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong>Teppan Edo</strong> — 15h00 · EPCOT · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/pt-br/dining/epcot/teppan-edo/" target="_blank" rel="noopener noreferrer">Teppan Edo</a></strong> — 15h00 · EPCOT · Restaurante</span></div>
 </div>
 </div>
 </div>
@@ -1325,7 +1327,7 @@
 <div class="card-label">Planos confirmados do dia</div>
 <div class="card-value">
 <div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">19h45</span><span class="tl-text"><strong>Jaleo Dinner</strong> — 19h45 · Disney Springs · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">19h45</span><span class="tl-text"><strong><a href="https://disneyworld.disney.go.com/dining/disney-springs/jaleo/" target="_blank" rel="noopener noreferrer">Jaleo Dinner</a></strong> — 19h45 · Disney Springs · Restaurante</span></div>
 </div>
 </div>
 </div>
@@ -1384,7 +1386,7 @@
 <div class="card-label">Planos confirmados do dia</div>
 <div class="card-value">
 <div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">19h00</span><span class="tl-text"><strong>Bigfire</strong> — 19h00 · CityWalk · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">19h00</span><span class="tl-text"><strong><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/bigfire" target="_blank" rel="noopener noreferrer">Bigfire</a></strong> — 19h00 · CityWalk · Restaurante</span></div>
 </div>
 </div>
 </div>
@@ -1439,7 +1441,7 @@
 <div class="card-label">Planos confirmados do dia</div>
 <div class="card-value">
 <div class="mini-timeline">
-<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong>Mythos</strong> — 15h00 · Islands of Adventure · Restaurante</span></div>
+<div class="tl-row"><span class="tl-time">15h00</span><span class="tl-text"><strong><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/mythos-restaurant" target="_blank" rel="noopener noreferrer">Mythos</a></strong> — 15h00 · Islands of Adventure · Restaurante</span></div>
 </div>
 </div>
 </div>
@@ -1864,7 +1866,7 @@
     if (nextRes) {
       if (rt) rt.textContent = nextRes.dataset.title;
       if (rd) rd.textContent = nextRes.dataset.detail;
-      if (rl) rl.href        = nextRes.getAttribute('href');
+      if (rl) rl.href        = nextRes.getAttribute('href') || nextRes.dataset.dayHref || '#reservations';
     } else {
       if (rt) rt.textContent = 'Sem próximas reservas';
       if (rd) rd.textContent = 'As reservas cadastradas já passaram.';
