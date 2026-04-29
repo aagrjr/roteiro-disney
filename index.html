@@ -1742,7 +1742,7 @@
 
   // ── PONTO 3: countdown sem valor hardcoded ───────────────────
   (function initCountdown() {
-    const START = new Date('2026-05-06T00:00:00');
+    const START = new Date('2026-05-05T00:00:00');
     const END   = new Date('2026-05-20T23:59:59');
     const wrap  = document.getElementById('countdown-wrap');
     const num   = document.getElementById('countdown-number');
@@ -1754,7 +1754,7 @@
       const dayNum = Math.floor((now - START) / 86400000) + 1;
       wrap.classList.add('traveling');
       num.textContent  = 'Dia ' + dayNum;
-      lbl.innerHTML    = 'de 15<br/>Você está em Orlando!';
+      lbl.innerHTML    = 'de 16<br/>Você está viajando!';
     } else if (now < START) {
       const diff = Math.ceil((START - now) / 86400000);
       num.textContent = diff;
