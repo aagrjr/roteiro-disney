@@ -649,7 +649,7 @@
     }
     #countdown-number { font-size: 20px; }
     #countdown-label { font-size: 10px; line-height: 1.1; }
-    .day-block { scroll-margin-top: 138px; }
+    /* scroll-margin-top aplicado dinamicamente pelo JS — não hardcodar aqui */
     .trip-status-grid { grid-template-columns: 1fr; margin: 0 0 26px; }
     .trip-status-title { font-size: 18px; }
     .reservation-section { margin-bottom: 30px; }
@@ -661,10 +661,6 @@
   }
 
 
-
-  /* ── DAILY CONFIRMED PLANS ───────────────── */
-  .daily-plans-card .tl-time { width: 64px; color: #bfdbfe; }
-  .daily-plans-card .tl-text strong { color: #f8fafc; }
 
   /* ── UTILITY ─────────────────────────────────── */
   .transport-suggestion .card-value strong { color: #bae6fd; }
@@ -1731,7 +1727,7 @@
         el.style.scrollMarginTop = margin + 'px';
       });
       // As seções de atalho também precisam de margem
-      ['reservations', 'wishlist'].forEach(function(id) {
+      ['reservations', 'wishlist', 'flights'].forEach(function(id) {
         const section = document.getElementById(id);
         if (section) section.style.scrollMarginTop = margin + 'px';
       });
