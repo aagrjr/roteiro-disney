@@ -649,7 +649,7 @@
     }
     #countdown-number { font-size: 20px; }
     #countdown-label { font-size: 10px; line-height: 1.1; }
-    /* scroll-margin-top aplicado dinamicamente pelo JS — não hardcodar aqui */
+    .day-block { scroll-margin-top: 138px; }
     .trip-status-grid { grid-template-columns: 1fr; margin: 0 0 26px; }
     .trip-status-title { font-size: 18px; }
     .reservation-section { margin-bottom: 30px; }
@@ -661,6 +661,10 @@
   }
 
 
+
+  /* ── DAILY CONFIRMED PLANS ───────────────── */
+  .daily-plans-card .tl-time { width: 64px; color: #bfdbfe; }
+  .daily-plans-card .tl-text strong { color: #f8fafc; }
 
   /* ── UTILITY ─────────────────────────────────── */
   .transport-suggestion .card-value strong { color: #bae6fd; }
@@ -955,11 +959,8 @@
 <a href="https://www.amazon.com/gp/product/B0GR1FWR38/ref=ox_sc_act_image_1?smid=ATVPDKIKX0DER&amp;psc=1" rel="noopener noreferrer" target="_blank">Apple MacBook Pro 14,2" — M5, 32GB, 1TB, Space Black</a>
 </strong>
 <div class="wishlist-meta">
-<span>Configuração: <strong>M5 · 10-core CPU/GPU · 32GB · 1TB · Space Black</strong></span>
-<span>Quantidade desejada: <strong>1</strong></span>
-<span>Numeração desejada: <strong>não se aplica</strong></span>
-<span>Valor atual: <span class="wishlist-price">US$ 2.099,00</span> <span class="wishlist-date">(informado em 27/04)</span></span>
-<span>Status: <span class="status-badge st-optional">Compra online</span></span>
+<span>Valor histórico: <span class="wishlist-price">US$ 2.099,00</span></span>
+<span>Status: <span class="status-badge st-confirmed">Comprado</span></span>
 </div>
 <div class="wishlist-actions">
 <a class="action-link" href="https://www.amazon.com/gp/product/B0GR1FWR38/ref=ox_sc_act_image_1?smid=ATVPDKIKX0DER&amp;psc=1" rel="noopener noreferrer" target="_blank">Abrir produto</a>
@@ -1727,7 +1728,7 @@
         el.style.scrollMarginTop = margin + 'px';
       });
       // As seções de atalho também precisam de margem
-      ['reservations', 'wishlist', 'flights'].forEach(function(id) {
+      ['reservations', 'wishlist'].forEach(function(id) {
         const section = document.getElementById(id);
         if (section) section.style.scrollMarginTop = margin + 'px';
       });
