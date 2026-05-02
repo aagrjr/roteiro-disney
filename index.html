@@ -470,6 +470,20 @@
   }
   .action-link:hover { border-color: #7dd3fc; }
 
+
+
+  /* ── CHECKLISTS COLAPSÁVEIS ───────────────── */
+  .info-card.express-card { border-color: rgba(167,139,250,.28); background: rgba(167,139,250,.055); }
+  .express-card .card-label { color: #c4b5fd; }
+  .check-note { color: var(--muted); font-family: -apple-system, sans-serif; font-size: 12px; line-height: 1.45; margin-bottom: 12px; }
+  .checklist-group-title { color: #ddd6fe; font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; margin: 12px 0 8px; }
+  .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+  .check-item { display: flex; align-items: flex-start; gap: 9px; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; padding: 9px 10px; background: rgba(0,0,0,.14); font-family: -apple-system, sans-serif; font-size: 13px; line-height: 1.35; color: var(--text); }
+  .check-item input { flex-shrink: 0; margin-top: 2px; accent-color: #a78bfa; }
+  .check-item span { cursor: pointer; }
+  .check-item:has(input:checked) { opacity: .62; }
+  .check-item:has(input:checked) span { text-decoration: line-through; }
+
   /* ── BACK TO TOP ─────────────────────────────── */
   .back-top {
     position: fixed; right: 24px; bottom: 24px;
@@ -1269,6 +1283,39 @@
 <div class="card-value"><strong>8h00</strong><div class="early-note">Pelo app da Universal: Islands abre 9h–20h, com Early Park Admission às 8h. Mirar saída do hotel por volta de 7h20–7h30.</div></div>
 </div>
 
+<details class="info-card express-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Checklist Express Pass — Islands of Adventure</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<div class="check-note">Atrações participantes do Express Pass para marcar no próprio dia. As marcações ficam salvas neste navegador.</div>
+<div class="checklist-group-title">Prioridade alta</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-hagrid"><span>Hagrid's Magical Creatures Motorbike Adventure</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-velocicoaster"><span>Jurassic World VelociCoaster</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-forbidden"><span>Harry Potter and the Forbidden Journey</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-spiderman"><span>The Amazing Adventures of Spider-Man</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-hulk"><span>The Incredible Hulk Coaster</span></label>
+</div>
+<div class="checklist-group-title">Também usar se fizer sentido</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-hippogriff"><span>Flight of the Hippogriff</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-hogwarts"><span>Hogwarts Express — se usar park-to-park</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-river"><span>Jurassic Park River Adventure</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-kong"><span>Skull Island: Reign of Kong</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-popeye"><span>Popeye & Bluto's Bilge-Rat Barges</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-ripsaw"><span>Dudley Do-Right's Ripsaw Falls</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-doom"><span>Doctor Doom's Fearfall</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-storm"><span>Storm Force Accelatron</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-cat"><span>The Cat in the Hat</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-trolley"><span>The High in the Sky Seuss Trolley Train Ride!</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-onefish"><span>One Fish, Two Fish, Red Fish, Blue Fish</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-ioa-carousel"><span>Caro-Seuss-el</span></label>
+</div>
+</div>
+</details>
+
 <details class="info-card suggestion-card span2">
 <summary class="suggestion-toggle">
 <span class="card-label" style="margin:0">Sugestões</span>
@@ -1303,6 +1350,34 @@
 <div class="card-label">Horário / chegada</div>
 <div class="card-value"><strong>10h00–20h00</strong><div class="early-note">Pelo app da Universal, não aparece Early Park Admission para Universal Studios neste dia. Mirar saída do hotel por volta de 9h15–9h30.</div></div>
 </div>
+
+<details class="info-card express-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Checklist Express Pass — Universal Studios</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<div class="check-note">Atrações participantes do Express Pass para marcar no próprio dia. As marcações ficam salvas neste navegador.</div>
+<div class="checklist-group-title">Prioridade alta</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-gringotts"><span>Harry Potter and the Escape from Gringotts</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-transformers"><span>Transformers: The Ride – 3D</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-mib"><span>Men in Black Alien Attack</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-minion"><span>Despicable Me Minion Mayhem</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-villaincon"><span>Illumination's Villain-Con Minion Blast</span></label>
+</div>
+<div class="checklist-group-title">Também usar se fizer sentido</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-hogwarts"><span>Hogwarts Express — se usar park-to-park</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-bourne"><span>The Bourne Stuntacular</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-fallon"><span>Race Through New York Starring Jimmy Fallon</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-fast"><span>Fast & Furious – Supercharged</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-simpsons"><span>The Simpsons Ride</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-kang"><span>Kang & Kodos' Twirl 'n' Hurl</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-usf-et"><span>E.T. Adventure</span></label>
+</div>
+</div>
+</details>
 
 <details class="info-card suggestion-card span2">
 <summary class="suggestion-toggle">
@@ -1380,6 +1455,34 @@
 <div class="card-value"><strong>9h</strong><div class="early-note">Epic Universe costuma abrir às 10h — com Early Park Admission, mirar 9h.</div></div>
 </div>
 
+<details class="info-card express-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Checklist Express Pass — Epic Universe</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<div class="check-note">Atrações participantes do Express Pass para marcar no próprio dia. As marcações ficam salvas neste navegador.</div>
+<div class="checklist-group-title">Prioridade alta</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-battle"><span>Harry Potter and the Battle at the Ministry</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-mariokart"><span>Mario Kart: Bowser's Challenge</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-minecart"><span>Mine-Cart Madness</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-stardust"><span>Stardust Racers</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-monsters"><span>Monsters Unchained: The Frankenstein Experiment</span></label>
+</div>
+<div class="checklist-group-title">Também usar se fizer sentido</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-werewolf"><span>Curse of the Werewolf</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-hiccup"><span>Hiccup's Wing Gliders</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-fyre"><span>Fyre Drill</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-untrainable"><span>The Untrainable Dragon</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-yoshi"><span>Yoshi's Adventure</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-carousel"><span>Constellation Carousel</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="express-epic-circus"><span>Le Cirque Arcanus</span></label>
+</div>
+</div>
+</details>
+
 <details class="info-card suggestion-card span2">
 <summary class="suggestion-toggle">
 <span class="card-label" style="margin:0">Sugestões</span>
@@ -1420,6 +1523,26 @@
 <div class="card-label">Almoço</div>
 <div class="card-value"><a href="https://www.universalorlando.com/web/en/us/things-to-do/dining/today-cafe" rel="noopener noreferrer" target="_blank">TODAY Cafe</a></div>
 </div>
+<details class="info-card express-card span2">
+<summary class="suggestion-toggle">
+<span class="card-label" style="margin:0">Checklist flexível — repetição Universal</span>
+<span class="toggle-icon">▾</span>
+</summary>
+<div class="suggestion-body card-value">
+<div class="check-note">Use este checklist para marcar o que ficou faltando nos dias anteriores ou repetir favoritos.</div>
+<div class="checklist-group-title">Repetir / fechar pendências</div>
+<div class="checklist-grid">
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-hagrid"><span>Hagrid's Magical Creatures Motorbike Adventure</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-velocicoaster"><span>Jurassic World VelociCoaster</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-hogwarts"><span>Hogwarts Express</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-gringotts"><span>Escape from Gringotts</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-forbidden"><span>Forbidden Journey</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-butterbeer"><span>Butterbeer / bebida do mundo Harry Potter</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-today"><span>TODAY Cafe</span></label>
+<label class="check-item"><input type="checkbox" data-check-id="flex-universal-pastry"><span>San Francisco Pastry Company</span></label>
+</div>
+</div>
+</details>
 <details class="info-card suggestion-card span2">
 <summary class="suggestion-toggle">
 <span class="card-label" style="margin:0">Sugestões — Como organizar o dia</span>
@@ -1673,6 +1796,20 @@
       }
     });
   })();
+
+  // ── Checklists: salvar marcações neste navegador ─────────────
+  (function initPersistentChecklists() {
+    const KEY_PREFIX = 'orlando-checklist:';
+    document.querySelectorAll('input[type="checkbox"][data-check-id]').forEach(function(input) {
+      const key = KEY_PREFIX + input.dataset.checkId;
+      input.checked = localStorage.getItem(key) === '1';
+      input.addEventListener('change', function() {
+        if (input.checked) localStorage.setItem(key, '1');
+        else localStorage.removeItem(key);
+      });
+    });
+  })();
+
 </script>
 </body>
 </html>
