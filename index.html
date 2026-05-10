@@ -1130,12 +1130,11 @@
 <span class="toggle-icon">▾</span>
 </summary>
 <div class="suggestion-body card-value">
-<strong>Opção principal:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/" rel="noopener noreferrer" target="_blank">Les Halles Boulangerie-Patisserie</a> — Pavilhão da França. Melhor escolha sem reserva para uma refeição leve: sanduíches, quiche, sopa em bread bowl, baguetes e doces. Boa para encaixar entre World Showcase e as atrações confirmadas.<br/><br/>
-<strong>Opção salgada simples:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/yorkshire-county-fish-shop/" rel="noopener noreferrer" target="_blank">Yorkshire County Fish Shop</a> — Pavilhão do Reino Unido. Fish and chips rápido, sem refeição longa.<br/><br/>
-<strong>Opção mais prática:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/connections-eatery/" rel="noopener noreferrer" target="_blank">Connections Eatery</a> — World Celebration. Bom plano B com mobile order, hambúrgueres, frango e pizzas, especialmente se o grupo quiser algo rápido perto da frente do parque.<br/><br/>
-<strong>Sobremesa:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/l-artisan-des-glaces/" rel="noopener noreferrer" target="_blank">L’Artisan des Glaces</a> — Pavilhão da França. Boa parada para provar o <strong>Croque Glacé</strong>: brioche quente prensado com sorvete e calda. Melhor para dividir ou encaixar como snack especial no World Showcase.<br/><br/>
-<strong>Snack de caramelo:</strong> <a href="https://disneyworld.disney.go.com/shops/karamell-kuche/" rel="noopener noreferrer" target="_blank">Karamell-Küche</a> — Pavilhão da Alemanha. Snack “vale a parada”, com produtos de caramelo Werther’s Original.<br/><br/>
-<strong>Se estiverem com mais fome:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/regal-eagle-smokehouse/" rel="noopener noreferrer" target="_blank">Regal Eagle Smokehouse</a> — Pavilhão dos EUA. Quick service de barbecue, útil se quiserem uma refeição mais substanciosa sem reserva.
+<strong>Café da manhã / lanche cedo:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/" rel="noopener noreferrer" target="_blank">Les Halles Boulangerie-Patisserie</a> — Pavilhão da França. Melhor encaixe antes do almoço tardio no Space 220: café, croissant, pain au chocolat, quiche ou algo leve para dividir.<br/><br/>
+<strong>Café rápido perto da frente do parque:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/connections-cafe/" rel="noopener noreferrer" target="_blank">Connections Café</a> — World Celebration. Boa opção prática para café, bebida gelada e algo pequeno sem transformar em refeição.<br/><br/>
+<strong>Sobremesa da tarde:</strong> <a href="https://disneyworld.disney.go.com/dining/epcot/l-artisan-des-glaces/" rel="noopener noreferrer" target="_blank">L’Artisan des Glaces</a> — Pavilhão da França. Boa parada para provar o <strong>Croque Glacé</strong>: brioche quente prensado com sorvete e calda. Melhor para dividir depois do Space 220, se ainda tiverem espaço.<br/><br/>
+<strong>Snack de caramelo:</strong> <a href="https://disneyworld.disney.go.com/shops/karamell-kuche/" rel="noopener noreferrer" target="_blank">Karamell-Küche</a> — Pavilhão da Alemanha. Snack “vale a parada”, com produtos de caramelo Werther’s Original. Melhor como compra para beliscar mais tarde ou levar.<br/><br/>
+<strong>Fim de noite leve:</strong> se bater fome depois do Space 220, priorizar algo pequeno no World Showcase ou apenas sobremesa/snack. Evitar almoço pesado antes da reserva das <strong>15h15</strong>.
           </div>
 </details>
 </div>
@@ -1693,8 +1692,8 @@
     if (now >= START && now <= END) {
       const dayNum = Math.floor((now - START) / 86400000) + 1;
       wrap.classList.add('traveling');
-      num.textContent  = 'Dia ' + dayNum;
-      lbl.innerHTML    = 'de 16<br/>Você está viajando!';
+      num.textContent  = 'Viagem';
+      lbl.innerHTML    = 'dia ' + dayNum + ' de 16<br/>Você está viajando!';
     } else if (now < START) {
       const diff = Math.ceil((START - now) / 86400000);
       num.textContent = diff;
