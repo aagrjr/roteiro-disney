@@ -648,21 +648,44 @@
     }
     .header-center { display: none; }
     #countdown-wrap {
-      display: inline-flex !important;
+      display: inline-grid !important;
+      grid-template-columns: auto auto;
+      align-items: center;
       visibility: visible !important;
       opacity: 1 !important;
       flex-shrink: 0;
       justify-self: end;
       gap: 6px;
-      padding: 7px 10px;
+      padding: 7px 9px;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: var(--bg);
       box-shadow: 0 2px 8px rgba(0,0,0,.25);
-      max-width: 128px;
+      max-width: 168px;
+      min-width: 0;
+      overflow: hidden;
     }
-    #countdown-number { font-size: 20px; }
-    #countdown-label { font-size: 10px; line-height: 1.1; }
+    #countdown-number {
+      font-size: 17px;
+      white-space: nowrap;
+    }
+    #countdown-label {
+      font-size: 10px;
+      line-height: 1.08;
+      white-space: nowrap;
+    }
+    #countdown-wrap.traveling {
+      gap: 7px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    #countdown-wrap.traveling #countdown-number {
+      font-size: 18px;
+      letter-spacing: -.04em;
+    }
+    #countdown-wrap.traveling #countdown-label {
+      font-size: 9px;
+    }
     /* scroll-margin-top aplicado dinamicamente pelo JS — não hardcodar aqui */
     .trip-status-grid { grid-template-columns: 1fr; margin: 0 0 26px; }
     .trip-status-title { font-size: 18px; }
@@ -1693,7 +1716,7 @@
       const dayNum = Math.floor((now - START) / 86400000) + 1;
       wrap.classList.add('traveling');
       num.textContent  = 'Viagem';
-      lbl.innerHTML    = 'dia ' + dayNum + ' de 16<br/>Você está viajando!';
+      lbl.innerHTML    = 'dia ' + dayNum + ' de 16<br/>em andamento';
     } else if (now < START) {
       const diff = Math.ceil((START - now) / 86400000);
       num.textContent = diff;
