@@ -1228,7 +1228,7 @@
 <div class="mini-timeline">
 <div class="tl-row"><span class="tl-time">Manhã</span><span class="tl-text">Checkout no Port Orleans, retirar compras em <strong>3065 Tradeport Dr</strong> e seguir para o Universal's Aventura Hotel.</span></div>
 <div class="tl-row"><span class="tl-time">Tarde</span><span class="tl-text">Check-in / descanso no Universal's Aventura Hotel.</span></div>
-<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Noite livre para jantar sem reserva (CityWalk ou hotel, conforme energia do dia).</span></div>
+<div class="tl-row"><span class="tl-time">Noite</span><span class="tl-text">Jantar flexível na região da Universal. Se estiverem cansados, priorizar <strong>Bar 17 Bistro</strong> no Aventura; se quiserem sair um pouco, considerar CityWalk ou Sapphire Falls.</span></div>
 </div>
 <div class="early-note">Armazém nos EUA: segunda a sexta, 7h às 16h, horário da Flórida.</div></div>
 </div>
@@ -1766,6 +1766,23 @@
         pill.textContent = 'hoje';
         a.insertBefore(pill, a.querySelector('.nav-date'));
       }
+    });
+  })();
+
+  // ── Abrir automaticamente no dia atual da viagem ─────────────
+  (function scrollToCurrentTripDay() {
+    // Respeita links diretos, ex.: index.html#day-05 ou #reservations.
+    if (window.location.hash) return;
+
+    const today = new Date().toISOString().slice(0, 10);
+    const todaySection = document.querySelector('.day-block[data-date="' + today + '"]');
+    if (!todaySection) return;
+
+    // Aguarda o layout aplicar scroll-margin dinâmico do header/mobile nav.
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        todaySection.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }, 120);
     });
   })();
 
